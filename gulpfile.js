@@ -67,9 +67,15 @@ var opts = {
  * До запуска слежки выполняется:
  *   1. Сборка SASS
  *   2. Запуск лок. сервера
+ *   3. Минификация HTML
+ *   4. Сборка изображений
+ *   5. Сборка иконочных шрифтов
  *
  * Во время слежки выполняется:
  *   1. Сборка SASS
+ *   2. Минификация HTML
+ *   3. Сборка изображений
+ *   4. Сборка иконочных шрифтов
  */
 
 gulp.task('watch', [ "ruby-sass", "htmlmin", "server", "img", "glyphicons" ], function(){
@@ -88,7 +94,7 @@ gulp.task('build', [ "ruby-sass", "htmlmin", "img", "glyphicons" ], function(){}
 
 
 
-// Компиляция SASS файлов(на основе libsass)
+// Компиляция SASS файлов(на основе node-sass/libsass)
 
 gulp.task('sass', function(){
 
@@ -102,7 +108,7 @@ gulp.task('sass', function(){
 
 
 
-// Использовать эту сборку SASS для поддержки всех фич(@at-root и т.п.)
+// Использовать эту сборку SASS(основана на Ruby) для поддержки всех фич(@at-root и т.п.)
 
 gulp.task('ruby-sass', function(){
 
