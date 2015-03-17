@@ -1,0 +1,21 @@
+@at-root {
+
+  $height: 50px;
+  $glyph-size: 40px;
+  $glyph-color: #000;
+
+  .logo {
+    display: inline-block;
+    max-height: em($height);
+    line-height: em($height);
+    white-space: nowrap;
+    color: $glyph-color;
+
+    &__glyph {
+      vertical-align: middle;
+      font-size: em($glyph-size);
+      ///line-height: 1;
+    }
+  }
+
+}

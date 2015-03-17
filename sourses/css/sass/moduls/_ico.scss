@@ -1,0 +1,94 @@
+@at-root {
+
+  $path: '../glyph-icons/';
+  $name: 'glyph';
+
+  @font-face {
+    font-family: $name;
+    src:url( $path + $name + '.eot?-x3n67s');
+    src:url( $path + $name + '.eot?#iefix-x3n67s') format('embedded-opentype'),
+        url( $path + $name + '.woff?-x3n67s') format('woff'),
+        url( $path + $name + '.ttf?-x3n67s') format('truetype'),
+        url( $path + $name + '.svg?-x3n67s#' + $name ) format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .ico {
+    font-family: $name;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &--logo-head:before { content: "\bf00"; }
+
+    &--unknown-user-0:before { content: "\bf01"; }
+
+    &--unknown-user-1:before { content: "\bf02"; }
+
+    &--unknown-user-2:before { content: "\bf03"; }
+
+    &--add-user-0:before { content: "\bf04"; }
+
+    &--add-user-1:before { content: "\bf05"; }
+
+    &--add-user-2:before { content: "\bf06"; }
+
+    &--settings-0:before { content: "\bf07"; }
+
+    &--settings-1:before { content: "\bf08"; }
+
+    &--off:before { content: "\bf09"; }
+
+    &--comment:before { content: "\bf10"; }
+
+    &--say:before { content: "\bf11"; }
+
+    &--dialog:before { content: "\bf12"; }
+
+    &--edit:before { content: "\bf13"; }
+
+    &--delete:before { content: "\bf14"; }
+
+    &--arrow-left:before { content: "\bf15"; }
+
+    &--arrow-rigth:before { content: "\bf16"; }
+
+    &--open-menu-btn-0:before { content: "\bf17"; }
+
+    &--open-menu-btn-1:before { content: "\bf18"; }
+
+    &--open-menu-btn-2:before { content: "\bf19"; }
+
+    &--coffee-1:before { content: "\bf20"; }
+
+    &--checkmark-3:before { content: "\bf21"; }
+
+    &--coffee-2:before { content: "\bf22"; }
+
+    &--warning:before { content: "\bf23"; }
+
+    &--search:before { content: "\bf24"; }
+
+    &--warning-2:before { content: "\bf25"; }
+
+    &--add:before { content: "\bf26"; }
+
+    &--add-2:before { content: "\bf27"; }
+
+    &--checkmark-2:before { content: "\bf28"; }
+
+    &--checkmark:before { content: "\bf29"; }
+
+    &--unlocked:before { content: "\bf30"; }
+
+    &--locked:before { content: "\bf31"; }
+  }
+}

@@ -1,0 +1,22 @@
+
+/// Сторонний код
+@import 'vendors/index';
+
+/// Переменныею, миксины, placeholders т.д.
+@import 'utils/index';
+
+/// Общие стили на всех страницах
+@import 'base/index';
+
+/// Разметка основных блоков, сетка и т.п.
+@import 'layout/index';
+
+/// Модули сайта( состовляющие блоки )
+@import
+  'moduls/logo',
+  'moduls/ico',
+  'moduls/nav',
+  'moduls/buttons',
+  'moduls/form',
+  'moduls/post',
+  'moduls/comments';

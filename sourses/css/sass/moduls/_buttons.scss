@@ -1,0 +1,106 @@
+@at-root {
+
+  $font-size: 14px;
+  $ico-size: 16px;
+  $height: 30px;
+  $border-radius: 3px;
+  $shadow: 5px;
+
+  .btn {
+    display: inline-block;
+    height: em($height);
+    padding: em(0 8px);
+    line-height: em(($height)-2px);
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: $border-radius;
+    outline: 0;
+    background: transparent;
+
+    &__glyph {
+      vertical-align: middle;
+      margin-right: em(3px,$ico-size);
+      line-height: 1;
+      font-size: em($ico-size);
+    }
+
+    span {
+      vertical-align: middle;
+      line-height: 1;
+      font-size: em($font-size);
+    }
+
+    &--default {
+      background-image: linear-gradient(0deg,hsl(0,0%,93%),#fff);
+      border-color: hsl(0,0%,90%);
+      color: hsl(0,0%,50%);
+
+      &:hover,
+      &:active {
+        background-image: linear-gradient(0deg,hsl(0,0%,94%),#fff);
+        color: hsl(0, 0%, 41%);
+      }
+
+      &:active {
+        background-image: linear-gradient(0deg,hsl(0,0%,100%),hsl(0,0%,94%));
+        box-shadow: 0 0 $shadow hsl(0,0%,86%);
+      }
+    }
+
+    &--ok {
+      background-image: linear-gradient(0deg,hsl(88, 100%, 73%),#fff);
+      border-color: hsl(87, 67%, 81%);
+      color: hsl(102, 32%, 55%);
+
+      &:hover,
+      &:active {
+        background-image: linear-gradient(0deg,hsl(85, 100%, 84%),#fff);
+        color: hsl(103, 26%, 42%);
+      }
+
+      &:active {
+        background-image: linear-gradient(0deg,#fff,hsl(85, 100%, 84%));
+        box-shadow: 0 0 $shadow hsl(88, 100%, 73%);
+      }
+    }
+  }
+
+
+
+  $min-btn-size: 16px;
+  $padding-min-btn: 4px;
+  $font-size: ($min-btn-size - $padding-min-btn*2 - 2px);
+
+  .min-btn {
+
+    @include size(em($min-btn-size,$font-size));
+
+    display: inline-block;
+    vertical-align: middle;
+    padding: em($padding-min-btn,$font-size);
+    font-size: $font-size;
+    line-height: 1;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    outline: 0;
+    background: transparent;
+
+    &--close {
+      background-color: lighten(#ff6067,10%);
+      color: hsl(0,0%,99%);
+
+      &:hover,
+      &:focus {
+        border-color: #444;
+      }
+
+      &:active { background-color: lighten(#ff6067,3%); }
+      &:before {
+        content: '\2573';
+        vertical-align: middle;
+      }
+    }
+  }
+
+}

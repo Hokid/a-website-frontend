@@ -1,0 +1,15 @@
+@mixin overlay-box( $border-rad:null, $shadow:null ) {
+
+  $border-rad: 5px !default;
+  $shadow: 20px !default;
+
+  border: 1px solid hsl(0,0%,93%);
+  border-radius: $border-rad;
+  background-color: hsl(0,0%,99%);
+  box-shadow: 0 0 $shadow hsl(0,0%,91%);
+}
+
+@mixin size( $width, $height:$width ) {
+  width: $width;
+  height: $height;
+}

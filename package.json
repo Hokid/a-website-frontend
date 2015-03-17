@@ -1,0 +1,14 @@
+{
+  "name": "a-website",
+  "version": "0.0.1",
+  "description": "",
+  "author": "hokid",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-csso": "^0.2.9",
+    "gulp-htmlmin": "^1.1.1",
+    "gulp-ruby-sass": "^1.0.0-alpha.3",
+    "gulp-sass": "^1.3.3",
+    "gulp-server-livereload": "^1.2.1"
+  }
+}

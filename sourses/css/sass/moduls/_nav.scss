@@ -1,0 +1,71 @@
+@at-root {
+
+  $height: 50px;
+  $width-dropdown-box: 260px;
+  $font-size-link: 14px;
+  $color-txt-link: hsl(0,0%,99%);
+  $color-bg-hover-link: hsl(357,100%,76%);
+
+  .nav {
+    position: relative;
+    line-height: 1;
+
+    &__box {
+
+      &--responsive {}
+    }
+
+    &__dropdown-box {
+
+      @include overlay-box();
+
+      position: absolute;
+      top: 100%;
+      margin-top: 14px;
+      width: em($width-dropdown-box);
+      padding-top: em(4px);
+      padding-bottom: em(4px);
+      line-height: 1;
+    }
+
+    &__box-actions {
+      padding-left: em(4px);
+      padding-right: em(4px);
+      line-height: 1;
+      text-align: right;
+    }
+
+    &__item {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+
+      &--btn-container {
+        line-height: em($height);
+        white-space: nowrap;
+
+        & + & { margin-left: em(15px); }
+      }
+    }
+
+    &__link {
+      display: block;
+      padding-left: em(10px,$font-size-link);
+      padding-right: em(10px,$font-size-link);
+      line-height: em($height,$font-size-link);
+      font-size: em($font-size-link);
+      text-align: center;
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: $color-txt-link;
+
+      &:hover { background-color: $color-bg-hover-link; }
+    }
+
+    /// Временно
+    &__toggle {
+      display: none;
+    }
+  }
+
+}

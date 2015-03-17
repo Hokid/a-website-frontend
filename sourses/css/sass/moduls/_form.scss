@@ -1,0 +1,114 @@
+@at-root {
+
+  $color-border: hsl(0,0%,93%);
+  $color-bg-txt-field: hsl(54, 100%, 93%);
+  $color-bg-pseudo-checkbox: hsl(54, 100%, 93%);
+  $font-size-txt-field: 14px;
+  $color-txt: hsl(0,0%,69%);
+  $border-radius: 3px;
+
+    .form {
+    padding: em(14px);
+    color: $color-txt;
+
+      &__actions {
+        padding-top: em(14px);
+        padding-bottom: em(14px);
+      }
+
+      &__field.field {
+        display: block;
+        width: 100%;
+        margin-bottom: em(15px);
+
+        &:last-of-type { margin-bottom: 0; }
+      }
+
+      &__field-caption.label {
+        display: block;
+        margin-left: em(7px);
+        margin-bottom: em(4px);
+      }
+
+      &__fieldset.fieldset {
+        width: 100%;
+        margin-top: em(15px);
+      }
+
+      &__option.option { display: block; }
+
+      ///&__option + &__option { margin-top: em(8px); }
+    }
+
+  .label,
+  .legend {
+    font-size: em(13px);
+    line-height: (13/16);
+  }
+
+  .txt-field {
+    padding: em(8px,$font-size-txt-field);
+    font-size: em($font-size-txt-field);
+    background-color: $color-bg-txt-field;
+    line-height: 1;
+    outline: 0;
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
+    color: $color-txt;
+
+    &:hover,
+    &:active { background-color: lighten($color-bg-txt-field,3%); }
+    &:focus {
+      color: darken($color-txt,70%);
+      background-color: lighten($color-bg-txt-field,4%);
+      box-shadow: 0 0 12px hsl(0,0%,90%);
+    }
+  }
+
+  .fieldset {
+    margin-left: 0;
+    margin-right: 0;
+    padding: em(12px);
+    line-height: (24/16);
+    border: 1px solid $color-border;
+    border-radius: em(5px);
+  }
+
+  .pseudo-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    width: em(16px);
+    height: em(16px);
+    line-height: em(14px);
+    border: 1px solid $color-border;
+    background-color: $color-bg-pseudo-checkbox;
+
+    input[type="checkbox"]:checked + &:not(.is-checked),
+    &.is-checked {
+      background-color: lighten($color-bg-txt-field,4%);
+
+      &:before {
+        content: '\2714';
+        vertical-align: middle;
+        margin-left: em(2px,10px);
+        font-size: em(10px);
+        color: lighten(#ff6067,10%);
+      }
+    }
+  }
+
+  .option {
+    display: inline-block;
+
+    span {
+      vertical-align: middle;
+      line-height: 1;
+      font-size: em(14px);
+    }
+
+    &__checkbox { margin-right: em(4px); }
+
+    &--responsive {}
+  }
+
+}

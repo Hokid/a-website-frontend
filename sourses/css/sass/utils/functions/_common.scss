@@ -1,0 +1,47 @@
+// Конвертор в em
+// em( число(а) [, значение em в px или цифрах] )
+
+@function em( $input, $em:16 ) {
+
+  $support-num: px em;
+  $support-str: auto;
+  $output: ();
+
+  @if not $input { @error "входные данные не найдены"; @return null }
+
+  @if not unitless( $em ) {
+
+    $em-unit: unit( $em );
+
+    @if $em-unit == px { $em: $em/1px }
+    @else if $em-unit == em { $em: $em/1em*16 }
+    @else { @error "#{$em} не поддерживается."; @return null }
+  }
+
+  @each $i in $input {
+
+    $i-type: type-of( $i );
+
+    @if $i-type == number {
+
+      $i-unit: unit( $i );
+      $i-unitless: unitless( $i );
+
+      @if not $i-unitless and not index( $support-num, $i-unit ) { @error "( #{$i} ) не поддерживается."; @return null }
+      @else if $i == 0 { $i: 0 }
+      @else if $i-unitless { $i: $i*1em/$em }
+      @else if $i-unit == px { $i: $i/1px*1em/$em }
+    }
+
+    @else if $i-type == string {
+
+      @if not index( $support-str, $i ) { @error "( #{$i} ) не поддерживается."; @return null }
+    }
+
+    $output: append( $output, $i )
+  }
+
+  @if length( $output ) == 1 { @return nth( $output, 1 ) }
+
+  @return $output;
+}

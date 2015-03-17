@@ -1,0 +1,43 @@
+/**
+ * Прижимает footer к низу странички сайта.
+ *
+ * Описание: http://ryanfait.com/resources/footer-stick-to-bottom-of-page
+ *
+ * Структура HTML:
+ *
+ * body
+ *   %u-push-footer-down - прижимает футер к низу
+ *     <content>
+ *   %u-footer
+ *
+ */
+
+/// Высота футера
+$height-footer: 70px !default;
+
+/// Стиль для html, body тега
+%u-view-height { height: 100%; }
+
+%u-push-footer-down {
+  min-height: 100%;
+  margin-bottom: -$height-footer;
+
+  &:after {
+    content: "";
+    display: block;
+    height: $height-footer;
+  }
+}
+
+%u-footer { height: $height-footer; }
+
+
+
+/// Очистка потока
+%u-clearfix:before,
+%u-clearfix:after {
+  content: ' ';
+  display: table;
+}
+
+%u-clearfix:after { clear: both; }

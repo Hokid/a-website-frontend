@@ -1,0 +1,24 @@
+@at-root {
+
+  .post {
+    font-family: roboto,sans-serif;
+    font-size: em(18px);
+    line-height: 1.5;
+    //color: #333;
+    color: hsl(238, 67%, 16%);
+
+    &__head {}
+    &__meta {}
+    &__body {
+
+      ul {
+        margin-top: em(18px);
+        margin-bottom: em(18px);
+        padding-left: em(40px);
+        list-style: disc;
+      }
+    }
+    &__acttions {}
+  }
+
+}
