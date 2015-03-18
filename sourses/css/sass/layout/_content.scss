@@ -1,13 +1,16 @@
-.l-content {}
+.l-content {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
 
 .l-main-col {
   max-width: em(640px);
-  padding: em(100px 50px 50px);
   float: left;
 }
 
 .l-sidebar {
   max-width: em(360px);
-  padding: em(100px 50px 50px);
+  padding-left: em(50px);
+  padding-right: em(50px);
   float: right;
 }
