@@ -16,8 +16,10 @@ ul {
 }
 
 hr {
-  border: none;
-  border-bottom: 2px solid #e8e8e8;
+  border-left: none;
+  border-right: none;
+  border-color: #e8e8e8;
+  border-style: solid;
   margin: 20px 0;
 }
 
@@ -25,4 +27,4 @@ p { margin: 0; }
 
 h1,h2,h3,h4,h5,h6 { margin: 0; }
 
-* { box-sizing: border-box; }
+*,*:before,*:after { box-sizing: border-box; }
