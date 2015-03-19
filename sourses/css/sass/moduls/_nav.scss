@@ -27,6 +27,8 @@
       padding-top: em(4px);
       padding-bottom: em(4px);
       line-height: 1;
+
+      &--right { right: 0; }
     }
 
     &__box-actions {
