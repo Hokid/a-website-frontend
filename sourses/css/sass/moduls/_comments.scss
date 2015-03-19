@@ -1,65 +1,86 @@
-.comments {
+@at-root {
 
-  $ava-size: 50px;
+  .comments {
 
-  &__title {
-    font-family: roboto,sans-serif;
-    line-height: 1.5;
-    padding-bottom: 15px;
-  }
+    $ava-size: 50px;
 
-  &__box {}
+    &__title {
+      font-family: roboto,sans-serif;
+      line-height: 1.5;
+      padding-bottom: 15px;
+    }
 
-  &__item {}
+    &__box {}
 
-  &__ava {
+    &__add { margin-bottom: 30px; }
 
-    @include size(em($ava-size));
+    &__textarea {
+      max-width: 100%;
+      min-height: em(100px);
+      width: 100%;
+    }
 
-    float: left;
+    &__item {}
 
-    img {
+    &__ava {
 
-      @include size(100%);
+      @include size(em($ava-size));
 
-      display: block;
+      float: left;
+
+      img {
+
+        @include size(100%);
+
+        display: block;
+      }
+    }
+
+    &__body {
+      margin-left: em(($ava-size)+8px);
+      line-height: 1.3;
+    }
+
+    &__owner {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: em(5px);
+      font-weight: bold;
+
+      &:hover,
+      &:focus { text-decoration: underline; }
+    }
+
+    &__meta {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: em(2px);
+      padding-right: em(2px);
+      background-color: #F0F0F0;
+      border-radius: 3px;
+      color: #A5A5A5;
+      font-size: em(14px);
+    }
+
+    &__txt {
+      padding-top: em(4px);
+      padding-bottom: em(4px);
+      font-family: roboto,sans-serif;
+      font-size: em(16px);
+      line-height: 1.3;
+      color: hsl(238, 67%, 16%);
+    }
+
+    &__actions {
+      padding-top: em(4px);
+      padding-bottom: em(4px);
+    }
+
+    &__action {
+      display: inline-block;
+
+      & + & { margin-left: em(7px); }
     }
   }
 
-  &__body {
-    margin-left: em(($ava-size)+8px);
-    line-height: 1.3
-  }
-
-  &__owner {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: em(5px);
-    font-weight: bold;
-
-    &:hover,
-    &:focus { text-decoration: underline; }
-  }
-
-  &__meta {
-    display: inline-block;
-    vertical-align: middle;
-    padding-left: em(2px);
-    padding-right: em(2px);
-    background-color: #F0F0F0;
-    border-radius: 3px;
-    color: #A5A5A5;
-    font-size: em(14px);
-  }
-
-  &__txt {
-    padding-top: em(4px);
-    padding-bottom: em(4px);
-    font-family: roboto,sans-serif;
-    font-size: em(16px);
-    line-height: 1.3;
-    color: hsl(238, 67%, 16%);
-  }
-
-  &__actions {}
 }
