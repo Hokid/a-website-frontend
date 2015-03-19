@@ -16,6 +16,12 @@
         padding-bottom: em(14px);
       }
 
+      &__action {
+        display: inline-block;
+
+        & + & { margin-left: em(7px); }
+      }
+
       &__field.txt-field {
         display: block;
         width: 100%;
