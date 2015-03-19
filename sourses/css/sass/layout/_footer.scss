@@ -1,1 +1,4 @@
-.l-footer { @extend %u-footer; }
+.l-footer {
+  @extend %u-footer;
+  min-width: em($width-page);
+}

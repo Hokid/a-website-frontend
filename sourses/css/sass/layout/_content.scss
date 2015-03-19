@@ -1,16 +1,17 @@
 .l-content {
-  padding-top: 100px;
-  padding-bottom: 50px;
+  min-width: em($width-page);
+  padding-top: $padding-top-content;
+  padding-bottom: $padding-content;
 }
 
 .l-main-col {
-  max-width: em(640px);
+  max-width: percentage($width-main-col/$width-page);
   float: left;
 }
 
 .l-sidebar {
-  max-width: em(360px);
-  padding-left: em(50px);
-  padding-right: em(50px);
+  max-width: percentage($width-sidebar/$width-page);
+  padding-left: percentage($padding-content/$width-page);
+  padding-right: percentage($padding-content/$width-page);
   float: right;
 }
