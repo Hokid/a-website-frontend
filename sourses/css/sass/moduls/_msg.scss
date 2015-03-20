@@ -9,6 +9,9 @@
     display: block;
     padding: 10px;
     margin: 5px;
+    font-family: roboto,sans-serif;
+    line-height: 1.2;
+    font-size: em(13px);
     text-align: center;
     border: 1px solid transparent;
     border-radius: 3px;
@@ -20,6 +23,24 @@
       border-color: #BEEEFF;
       background-color: #EFFBFF;
       color: #79BED7;
+    }
+
+    &--warning {
+      border-color: #FFEE96;
+      background-color: #FFFCE4;
+      color: #D7B679;
+    }
+
+    &--danger {
+      border-color: #FFBEBE;
+      background-color: #FFEFEF;
+      color: #D77979;
+    }
+
+    &--success {
+      border-color: #D3FFA3;
+      background-color: #EBFFDF;
+      color: #9FD779;
     }
   }
 
