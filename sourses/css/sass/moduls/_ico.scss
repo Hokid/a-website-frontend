@@ -27,68 +27,125 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    &--logo-head:before { content: "\bf00"; }
+    &--close-4:before {content: "\e600";}
 
-    &--unknown-user-0:before { content: "\bf01"; }
+    &--close-5:before {content: "\e601";}
 
-    &--unknown-user-1:before { content: "\bf02"; }
+    &--arrow-down:before {content: "\e602";}
 
-    &--unknown-user-2:before { content: "\bf03"; }
+    &--close-6:before {content: "\e603";}
 
-    &--add-user-0:before { content: "\bf04"; }
+    &--checkmark-7:before {content: "\e604";}
 
-    &--add-user-1:before { content: "\bf05"; }
+    &--nav-3:before {content: "\e605";}
 
-    &--add-user-2:before { content: "\bf06"; }
+    &--more-h:before {content: "\e606";}
 
-    &--settings-0:before { content: "\bf07"; }
+    &--more-v:before {content: "\e607";}
 
-    &--settings-1:before { content: "\bf08"; }
+    &--checkbox-on:before {content: "\e608";}
 
-    &--off:before { content: "\bf09"; }
+    &--checkbox-off:before {content: "\e609";}
 
-    &--comment:before { content: "\bf10"; }
+    &--radio-off:before {content: "\e60a";}
 
-    &--say:before { content: "\bf11"; }
+    &--radio-on:before {content: "\e60b";}
 
-    &--dialog:before { content: "\bf12"; }
+    &--warning-3:before {content: "\e60c";}
 
-    &--edit:before { content: "\bf13"; }
+    &--search-2:before {content: "\e60d";}
 
-    &--delete:before { content: "\bf14"; }
+    &--checkmark-5:before {content: "\e60e";}
 
-    &--arrow-left:before { content: "\bf15"; }
+    &--close:before {content: "\e60f";}
 
-    &--arrow-rigth:before { content: "\bf16"; }
+    &--checkmark-4:before {content: "\e610";}
 
-    &--open-menu-btn-0:before { content: "\bf17"; }
+    &--close-2:before {content: "\e611";}
 
-    &--open-menu-btn-1:before { content: "\bf18"; }
+    &--close-3:before {content: "\e612";}
 
-    &--open-menu-btn-2:before { content: "\bf19"; }
+    &--stop:before {content: "\e613";}
 
-    &--coffee-1:before { content: "\bf20"; }
+    &--msg:before {content: "\e614";}
 
-    &--checkmark-3:before { content: "\bf21"; }
+    &--file-2:before {content: "\e615";}
 
-    &--coffee-2:before { content: "\bf22"; }
+    &--file:before {content: "\e616";}
 
-    &--warning:before { content: "\bf23"; }
+    &--add-3:before {content: "\e617";}
 
-    &--search:before { content: "\bf24"; }
+    &--minus:before {content: "\e618";}
 
-    &--warning-2:before { content: "\bf25"; }
+    &--left-quote:before {content: "\e619";}
 
-    &--add:before { content: "\bf26"; }
+    &--right-quote:before {content: "\e61a";}
 
-    &--add-2:before { content: "\bf27"; }
+    &--hash:before {content: "\e61b";}
 
-    &--checkmark-2:before { content: "\bf28"; }
+    &--logo-head:before {content: "\bf00";}
 
-    &--checkmark:before { content: "\bf29"; }
+    &--unknown-user-0:before {content: "\bf01";}
 
-    &--unlocked:before { content: "\bf30"; }
+    &--unknown-user-1:before {content: "\bf02";}
 
-    &--locked:before { content: "\bf31"; }
+    &--unknown-user-2:before {content: "\bf03";}
+
+    &--add-user-0:before {content: "\bf04";}
+
+    &--add-user-1:before {content: "\bf05";}
+
+    &--add-user-2:before {content: "\bf06";}
+
+    &--settings-0:before {content: "\bf07";}
+
+    &--settings-1:before {content: "\bf08";}
+
+    &--off:before {content: "\bf09";}
+
+    &--comment:before {content: "\bf10";}
+
+    &--say:before {content: "\bf11";}
+
+    &--dialog:before {content: "\bf12";}
+
+    &--edit:before {content: "\bf13";}
+
+    &--delete:before {content: "\bf14";}
+
+    &--arrow-left:before {content: "\bf15";}
+
+    &--arrow-rigth:before {content: "\bf16";}
+
+    &--nav-0:before {content: "\bf17";}
+
+    &--nav-1:before {content: "\bf18";}
+
+    &--nav-2:before {content: "\bf19";}
+
+    &--coffee-1:before {content: "\bf20";}
+
+    &--checkmark-3:before {content: "\bf21";}
+
+    &--coffee-2:before {content: "\bf22";}
+
+    &--warning:before {content: "\bf23";}
+
+    &--search:before {content: "\bf24";}
+
+    &--warning-2:before {content: "\bf25";}
+
+    &--add:before {content: "\bf26";}
+
+    &--add-2:before {content: "\bf27";}
+
+    &--checkmark-2:before {content: "\bf28";}
+
+    &--checkmark:before {content: "\bf29";}
+
+    &--unlocked:before {content: "\bf30";}
+
+    &--locked:before {content: "\bf31";}
+
   }
 }
