@@ -1,5 +1,7 @@
 .l-container {
   width: em($width-page);
+  padding-left: em($h-padding);
+  padding-right: em($h-padding);
   margin-left: auto;
   margin-right: auto;
 }

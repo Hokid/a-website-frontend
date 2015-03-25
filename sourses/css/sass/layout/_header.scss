@@ -1,7 +1,5 @@
 .l-header {
   min-width: em($width-page);
-  height: em(50px);
-  //background-color: #ff6067;
-  //background-color: hsl(356, 83%, 51%);
-  background-color: #479DE5;
+  height: em($height-header);
+  background-color: $color-bg-header;
 }
