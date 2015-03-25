@@ -1,108 +1,129 @@
 @at-root {
 
+  /// Параметры
   $font-size: 14px;
-  $ico-size: 16px;
+  $line-height: 18px;
+  $ico-size: $line-height;
   $height: 30px;
+  $v-padding: (($height - $line-height)-2px)/2;
+  $h-padding: 8px;
   $border-radius: 3px;
   $shadow: 5px;
 
+  /// Цвета
+  $color-bg-default: hsl(0,0%,92%);
+  $color-txt-default: darken($color-bg-default,42%);
+  $color-bg-ok: hsl(88, 100%, 73%);
+  $color-txt-ok: darken($color-bg-ok,44%);
+
+
+
+  /**
+   * Кросс-браузерность:
+   *
+   *  * для IE background лучше заменить на непрозрачный
+   *  * Добавить фильтры для ie9-
+   */
+
   .btn {
     display: inline-block;
-    height: em($height);
-    padding: em(0 8px);
-    line-height: em(($height)-2px);
+    vertical-align: middle;
+    height: em($height,$font-size);
+    padding: em($v-padding $h-padding,$font-size);
+    line-height: em($line-height,$font-size);
+    font-size: em($font-size);
     white-space: nowrap;
     border: 1px solid transparent;
     border-radius: $border-radius;
     outline: 0;
-    background: transparent;
+    background: #fff;
 
-    &__glyph {
-      vertical-align: middle;
+    > .ico {
+      vertical-align: text-bottom;
       margin-right: em(3px,$ico-size);
-      line-height: 1;
-      font-size: em($ico-size);
-    }
-
-    span {
-      vertical-align: middle;
-      line-height: 1;
-      font-size: em($font-size);
+      font-size: em($ico-size,$font-size);
     }
 
     &--default {
-      background-image: linear-gradient(0deg,hsl(0,0%,93%),#fff);
-      border-color: hsl(0,0%,90%);
-      color: hsl(0,0%,50%);
+      background-color: lighten($color-bg-default,3%);
+      background-image: linear-gradient(0deg,$color-bg-default,lighten($color-bg-default,7%));
+      border-color: darken($color-bg-default,2%);
+      color: $color-txt-default;
 
       &:hover,
-      &:focus,
-      &:active {
-        background-image: linear-gradient(0deg,hsl(0,0%,94%),#fff);
-        color: hsl(0, 0%, 41%);
+      &:focus {
+        background-color: lighten($color-bg-default,5%);
+        background-image: linear-gradient(0deg,lighten($color-bg-default,2%),lighten($color-bg-default,7%));
+        color: darken($color-txt-default,9%);
       }
 
       &:active {
-        background-image: linear-gradient(0deg,hsl(0,0%,100%),hsl(0,0%,94%));
-        box-shadow: 0 0 $shadow hsl(0,0%,86%);
+        background-color: lighten($color-bg-default,1%);
+        background-image: linear-gradient(0deg,lighten($color-bg-default,7%),lighten($color-bg-default,2%));
+        box-shadow: 0 0 $shadow darken($color-bg-default,6%);
       }
     }
 
     &--ok {
-      background-image: linear-gradient(0deg,hsl(88, 100%, 73%),#fff);
-      border-color: hsl(87, 67%, 81%);
-      color: hsl(102, 32%, 55%);
-
-      &:hover,
-      &:focus,
-      &:active {
-        background-image: linear-gradient(0deg,hsl(85, 100%, 84%),#fff);
-        color: hsl(103, 26%, 42%);
-      }
-
-      &:active {
-        background-image: linear-gradient(0deg,#fff,hsl(85, 100%, 84%));
-        box-shadow: 0 0 $shadow hsl(88, 100%, 73%);
-      }
-    }
-  }
-
-
-
-  $min-btn-size: 16px;
-  $padding-min-btn: 4px;
-  $font-size: ($min-btn-size - $padding-min-btn*2 - 2px);
-
-  .min-btn {
-
-    @include size(em($min-btn-size,$font-size));
-
-    display: inline-block;
-    vertical-align: middle;
-    padding: em($padding-min-btn,$font-size);
-    font-size: $font-size;
-    line-height: 1;
-    white-space: nowrap;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    outline: 0;
-    background: transparent;
-
-    &--close {
-      background-color: lighten(#ff6067,10%);
-      color: hsl(0,0%,99%);
+      background-image: linear-gradient(0deg,$color-bg-ok,lighten($color-bg-ok,23%));
+      border-color: darken($color-bg-ok,8%);
+      color: $color-txt-ok;
 
       &:hover,
       &:focus {
-        border-color: #444;
+        background-image: linear-gradient(0deg,lighten($color-bg-ok,8%),lighten($color-bg-ok,25%));
+        color: darken($color-txt-ok,9%);
       }
 
-      &:active { background-color: lighten(#ff6067,3%); }
-      &:before {
-        content: '\2573';
-        vertical-align: middle;
+      &:active {
+        background-image: linear-gradient(0deg,lighten($color-bg-ok,25%),lighten($color-bg-ok,8%));
+        box-shadow: 0 0 $shadow darken($color-bg-ok,16%);
       }
     }
   }
+}
 
+
+
+/// Круглая мини-кнопка
+
+@at-root {
+
+  // Параметры
+  $size: 18px;
+  $ico-size: 12px;
+  $padding: (($size - $ico-size)-2px)/2px;
+
+  // Цвета
+  $color-bg-close: lighten(#ff6067,10%);
+  $color-txt-close: hsl(0,0%,99%);
+  $color-border-close: #444;
+
+
+
+  .round-btn {
+
+    @include size(em($size,$ico-size));
+
+    display: inline-block;
+    vertical-align: middle;
+    padding: em($padding,$ico-size);
+    font-size: em($ico-size);
+    border: 1px solid transparent;
+    border-radius: 50%;
+    outline: 0;
+    background: #fff;
+
+    &--close {
+      background-color: $color-bg-close;
+      color: $color-txt-close;
+
+      &:hover,
+      &:focus {
+        border-color: $color-border-close;
+      }
+
+      &:active { background-color: darken($color-bg-close,7%); }
+    }
+  }
 }
