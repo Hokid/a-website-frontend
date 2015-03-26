@@ -6,22 +6,22 @@
 
 /// Leading-и(вертикальные отступы)
 
-.leading-xxs { @extend %leading-xxs; }
-.leading-xs { @extend %leading-xs; }
-.leading-s { @extend %leading-s; }
-.leading-m { @extend %leading-m; }
-.leading-l { @extend %leading-l; }
-.leading-xl { @extend %leading-xl; }
-.leading-xxl { @extend %leading-xxl; }
+.u-leading-xxs { @extend %u-leading-xxs; }
+.u-leading-xs { @extend %u-leading-xs; }
+.u-leading-s { @extend %u-leading-s; }
+.u-leading-m { @extend %u-leading-m; }
+.u-leading-l { @extend %u-leading-l; }
+.u-leading-xl { @extend %u-leading-xl; }
+.u-leading-xxl { @extend %u-leading-xxl; }
 
 
 
 /// расстояние между элементами между элементами
 
-.gutter-xxs { @extend %gutter-xxs; }
-.gutter-xs { @extend %gutter-xs; }
-.gutter-s { @extend %gutter-s; }
-.gutter-m { @extend %gutter-m; }
-.gutter-l { @extend %gutter-l; }
-.gutter-xl { @extend %gutter-xl; }
-.gutter-xxl { @extend %gutter-xxl; }
+.u-gutter-xxs { @extend %u-gutter-xxs; }
+.u-gutter-xs { @extend %u-gutter-xs; }
+.u-gutter-s { @extend %u-gutter-s; }
+.u-gutter-m { @extend %u-gutter-m; }
+.u-gutter-l { @extend %u-gutter-l; }
+.u-gutter-xl { @extend %u-gutter-xl; }
+.u-gutter-xxl { @extend %u-gutter-xxl; }
