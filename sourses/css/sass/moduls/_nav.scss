@@ -1,15 +1,19 @@
 @at-root {
 
+  /// Параметры
   $height: 50px;
   $width-dropdown-box: 260px;
   $font-size-link: 14px;
+
+  /// Цвета
   $color-txt-link: hsl(0,0%,99%);
   $color-bg-hover-link: #EF556C;
-  //$color-bg-hover-link: hsl(357,100%,76%);
+
+
 
   .nav {
     position: relative;
-    line-height: 1;
+    line-height: normal;
 
     &__box {
 
@@ -19,21 +23,20 @@
     &__dropdown-box {
 
       @include overlay-box();
+      @include v-padding(em(4px));
 
       position: absolute;
       top: 100%;
-      margin-top: 14px;
+      margin-top: em(14px);
       width: em($width-dropdown-box);
-      padding-top: em(4px);
-      padding-bottom: em(4px);
-      line-height: 1;
 
       &--right { right: 0; }
     }
 
     &__box-actions {
-      padding-left: em(4px);
-      padding-right: em(4px);
+
+      @include h-padding(em(4px));
+
       line-height: 1;
       text-align: right;
     }
@@ -42,23 +45,15 @@
       position: relative;
       display: inline-block;
       vertical-align: top;
-
-      &--btn-container {
-        line-height: em($height);
-        white-space: nowrap;
-
-        & + & { margin-left: em(15px); }
-      }
     }
 
     &__link {
+
+      @include h-padding(em(10px,$font-size-link));
+
       display: block;
-      padding-left: em(10px,$font-size-link);
-      padding-right: em(10px,$font-size-link);
       line-height: em($height,$font-size-link);
       font-size: em($font-size-link);
-      text-align: center;
-      white-space: nowrap;
       text-transform: uppercase;
       color: $color-txt-link;
 
@@ -70,5 +65,4 @@
       display: none;
     }
   }
-
 }
