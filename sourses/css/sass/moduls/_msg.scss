@@ -4,19 +4,29 @@
 
 @at-root {
 
+  /// Параметры
+  $font-size: 13px;
+
+  /// Цвета
+  $color-border-default: hsl(0,0%,90%);
+  $color-bg-default: hsl(0,0%,99%);
+  $color-txt-default: hsl(0,0%,50%);
+
+
+
   .msg {
     position: relative;
     display: block;
-    padding: 10px;
+    padding: em(10px,$font-size);
     margin: 5px;
     font-family: roboto,sans-serif;
     line-height: 1.2;
-    font-size: em(13px);
+    font-size: em($font-size);
     text-align: center;
-    border: 1px solid transparent;
+    border: 1px solid $color-border-default;
     border-radius: 3px;
-    background: transparent;
-    color: #000;
+    background: $color-bg-default;
+    color: $color-txt-default;
     cursor: help;
 
     &--info {
@@ -43,5 +53,4 @@
       color: #9FD779;
     }
   }
-
 }
