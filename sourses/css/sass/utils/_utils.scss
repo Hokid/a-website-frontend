@@ -3,3 +3,25 @@
 .u-pull-left { float: left; }
 .u-clearfix { @extend %u-clearfix; }
 .u-hide { display: none; }
+
+/// Leading-и(вертикальные отступы)
+
+.leading-xxs { @extend %leading-xxs; }
+.leading-xs { @extend %leading-xs; }
+.leading-s { @extend %leading-s; }
+.leading-m { @extend %leading-m; }
+.leading-l { @extend %leading-l; }
+.leading-xl { @extend %leading-xl; }
+.leading-xxl { @extend %leading-xxl; }
+
+
+
+/// расстояние между элементами между элементами
+
+.gutter-xxs { @extend %gutter-xxs; }
+.gutter-xs { @extend %gutter-xs; }
+.gutter-s { @extend %gutter-s; }
+.gutter-m { @extend %gutter-m; }
+.gutter-l { @extend %gutter-l; }
+.gutter-xl { @extend %gutter-xl; }
+.gutter-xxl { @extend %gutter-xxl; }

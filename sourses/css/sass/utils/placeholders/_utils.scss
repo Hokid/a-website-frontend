@@ -41,3 +41,31 @@ $height-footer: 70px !default;
 }
 
 %u-clearfix:after { clear: both; }
+
+
+
+/// Leading-и(вертикальные отступы)
+
+$leading-step: 5px;
+
+%leading-xxs { @include v-padding(em($leading-step)); }
+%leading-xs { @include v-padding(em($leading-step*2)); }
+%leading-s { @include v-padding(em($leading-step*3)); }
+%leading-m { @include v-padding(em($leading-step*4)); }
+%leading-l { @include v-padding(em($leading-step*5)); }
+%leading-xl { @include v-padding(em($leading-step*6)); }
+%leading-xxl { @include v-padding(em($leading-step*7)); }
+
+
+
+/// расстояние между элементами между элементами
+
+$gutter-step: 5px;
+
+%gutter-xxs { & + & { margin-left: em($gutter-step); } }
+%gutter-xs { & + & { margin-left: em($gutter-step*2); } }
+%gutter-s { & + & { margin-left: em($gutter-step*3); } }
+%gutter-m { & + & { margin-left: em($gutter-step*4); } }
+%gutter-l { & + & { margin-left: em($gutter-step*5); } }
+%gutter-xl { & + & { margin-left: em($gutter-step*6); } }
+%gutter-xxl { & + & { margin-left: em($gutter-step*7); } }
