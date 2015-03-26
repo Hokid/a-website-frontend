@@ -1,23 +1,32 @@
 @at-root {
 
-  .post {
-    font-family: roboto,sans-serif;
-    font-size: em(18px);
-    line-height: 1.5;
-    //color: #333;
-    color: hsl(238, 67%, 16%);
+  /// Параметры
+  $font-family: $font-family-roboto;
+  $font-size: 18px;
 
-    &--narrow {
-      padding-left: em(50px,18px);
-      padding-right: em(50px,18px);
-    }
+  /// Цвета
+  $color-txt: hsl(238, 67%, 16%);
+
+
+
+  .post {
+    font-family: $font-family;
+    font-size: em($font-size);
+    line-height: 1.5;
+    color: $color-txt;
+
+    &--narrow { @include h-padding(em(50px,18px)); }
 
     &__head {}
+
     &__meta {
       font-style: italic;
       font-size: em(14px,18px);
     }
+
     &__body {
+
+      p + p { padding-top: em(10px); }
 
       ul {
         margin-top: em(18px);
@@ -27,9 +36,10 @@
       }
 
       kbd {
+
+        @include h-padding(em(16px));
+
         background-color: #efefef;
-        padding-left: em(16px);
-        padding-right: em(16px);
         border-radius: 3px;
         color: #6c6c6c;
       }
@@ -48,9 +58,10 @@
       mark { background-color: #fff983; }
 
       h1,h2,h3,h4,h5,h6 {
+
+        @include v-padding(em(15px));
+
         text-indent: 10px;
-        padding-top: 15px;
-        padding-bottom: 15px;
       }
 
       abbr { cursor: help; }
@@ -70,12 +81,12 @@
       cite { color: #a8a8a8; }
 
       code, var, samp {
+
+        @include h-padding(em(5px));
+
         font-style: normal;
         background-color: #222;
         color: #298ABD;
-        padding-left: 5px;
-        padding-right: 5px;
-        border-radius: 3px;
       }
 
       pre {
@@ -84,7 +95,6 @@
 
         code, samp {
           background: transparent;
-          border-radius: 0;
           padding: 0;
         }
       }
@@ -93,7 +103,8 @@
         font-weight: 600;
         font-style: italic;
       }
-      dd { margin-bottom: 20px; }
+
+      dd { margin-bottom: em(20px); }
     }
 
     &__acttions {}
