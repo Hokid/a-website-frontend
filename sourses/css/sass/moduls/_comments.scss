@@ -19,7 +19,7 @@
   /// Параметры
   $ava-size: 50px;
   $margin-left-body: ($ava-size)+8px;
-  $font-family: 'roboto','Arial',sans-serif;
+  $font-family: $font-family-roboto;
   $min-height-textarea: 100px;
   $v-padding-item: 6px;
   $v-padding-box: 10px;

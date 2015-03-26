@@ -5,6 +5,7 @@
 @at-root {
 
   /// Параметры
+  $font-family: $font-family-roboto;
   $font-size: 13px;
 
   /// Цвета
@@ -19,7 +20,7 @@
     display: block;
     padding: em(10px,$font-size);
     margin: 5px;
-    font-family: roboto,sans-serif;
+    font-family: $font-family;
     line-height: 1.2;
     font-size: em($font-size);
     text-align: center;
