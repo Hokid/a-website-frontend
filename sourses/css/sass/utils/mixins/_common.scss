@@ -24,3 +24,18 @@
   color: $color-txt;
   border-left: 5px solid $color-border;
 }
+
+@mixin v-padding( $size ) {
+  padding-top: $size;
+  padding-bottom: $size;
+}
+
+@mixin h-padding( $size ) {
+  padding-left: $size;
+  padding-right: $size;
+}
+
+@mixin padding( $type, $size ) {
+  @if $type == 'v' { @include v-padding( $size ) }
+  @if $type == 'h' { @include h-padding( $size ) }
+}
