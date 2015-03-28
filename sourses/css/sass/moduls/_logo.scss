@@ -3,7 +3,6 @@
   $height: $height-header;
   $glyph-size: 40px;
   $glyph-color: #000;
-  $screen-max: 1000px;
 
   .logo {
     display: inline-block;
@@ -15,7 +14,7 @@
       line-height: $height;
     }
 
-    @include media-mx-w($screen-max) {
+    @include media-mx-w($screen-l) {
 
       @include h-margin(auto);
       @include h-pos(0);
