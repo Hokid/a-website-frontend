@@ -39,3 +39,37 @@
   @if $type == 'v' { @include v-padding( $size ) }
   @if $type == 'h' { @include h-padding( $size ) }
 }
+
+@mixin v-margin( $size ) {
+  margin-top: $size;
+  margin-bottom: $size;
+}
+
+@mixin h-margin( $size ) {
+  margin-left: $size;
+  margin-right: $size;
+}
+
+@mixin margin( $type, $size ) {
+  @if $type == 'v' { @include v-margin( $size ) }
+  @if $type == 'h' { @include h-margin( $size ) }
+}
+
+@mixin v-pos( $size ) {
+  top: $size;
+  bottom: $size;
+}
+
+@mixin h-pos( $size ) {
+  left: $size;
+  right: $size;
+}
+
+@mixin pos( $type, $size ) {
+  @if $type == 'v' { @include v-pos( $size ) }
+  @if $type == 'h' { @include h-pos( $size ) }
+}
+
+@mixin media-mx-w( $val ) {
+  @media screen and (max-width: $val) { @content; }
+}
