@@ -1,13 +1,8 @@
 @at-root {
 
   /// Параметры
-  $height: 50px;
+  $height: $height-header;
   $width-dropdown-box: 260px;
-  $font-size-link: 14px;
-
-  /// Цвета
-  $color-txt-link: hsl(0,0%,99%);
-  $color-bg-hover-link: #EF556C;
 
 
 
@@ -17,26 +12,39 @@
 
     &__box {
 
-      &--responsive {}
+      /// Отзывчивость
+      &--respons {
+        @include media-mx-w($screen-l) {
+          @include overlay-box();
+          @include v-padding(4px);
+          display: none;
+          position: absolute;
+          top: $height;
+          margin-top: 14px;
+          width: $width-dropdown-box;
+        }
+      }
+
+      /// Временно
+      @media screen and (min-width: $screen-l) {
+        display: block !important;
+      }
     }
 
     &__dropdown-box {
-
       @include overlay-box();
-      @include v-padding(em(4px));
-
+      @include v-padding(4px);
+      display: none;
       position: absolute;
-      top: 100%;
-      margin-top: em(14px);
-      width: em($width-dropdown-box);
+      top: $height;
+      margin-top: 14px;
+      width: $width-dropdown-box;
 
       &--right { right: 0; }
     }
 
     &__box-actions {
-
-      @include h-padding(em(4px));
-
+      @include h-padding(4px);
       line-height: 1;
       text-align: right;
     }
@@ -45,24 +53,106 @@
       position: relative;
       display: inline-block;
       vertical-align: top;
+
+      /// Отзывчивость
+      &--respons {
+        @include media-mx-w($screen-l) {
+          display: block;
+
+          & + & { border-top: 1px solid hsl(0,0%,93%); }
+        }
+      }
     }
 
     &__link {
 
-      @include h-padding(em(10px,$font-size-link));
+      /// Параметры
+      $font-size: 14px;
+      $v-padding: (($height)-$font-size)/2;
+      $h-padding: 10px;
+
+      /// Цвета
+      $color-txt: hsl(0,0%,99%);
+      $color-bg-hover: #58A9EC; ///#EF556C;
+
+
 
       display: block;
-      line-height: em($height,$font-size-link);
-      font-size: em($font-size-link);
+      padding: $v-padding $h-padding;
+      height: $height;
+      font-size: $font-size;
+      line-height: 1;
       text-transform: uppercase;
-      color: $color-txt-link;
+      color: $color-txt;
 
-      &:hover { background-color: $color-bg-hover-link; }
+      &:hover {
+        padding-top: ($v-padding)-2px;
+        background-color: $color-bg-hover;
+        border-bottom: 2px solid hsl(0,0%,40%);
+        box-shadow: 0px -1px 8px -2px hsl(0,0%,40%);
+      }
+
+      &:active {
+        box-shadow: inset 1px 2px 6px -1px darken(hsl(0,0%,40%),10%);
+        border-color: darken(hsl(0,0%,40%),10%);
+      }
+
+      /// Отзывчивость
+      &--respons {
+        @include media-mx-w($screen-l) {
+          color: hsl(0,0%,50%);
+
+          &:hover {
+            padding-top: $v-padding;
+            background-color: hsl(54, 100%, 93%);
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
     }
 
     /// Временно
-    &__toggle {
+    &__toggle.btn {
+      @include v-margin(10px);
       display: none;
+
+      > .ico { font-size: 18px; }
+
+      @include media-mx-w($screen-l) {
+        display: inline-block;
+      }
+    }
+  }
+
+  /**
+   * Декоративная стрелочка к dropdown-box.
+   * Рассчитана на использование только header-е.
+   * Добавляется(в основном) к .nav__item посредством JS
+   * при активации dropdown-box.
+   */
+  .pointer {
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      margin-left: -10px;
+      top: ($height)-6px;
+      border: 10px solid transparent;
+    }
+
+    &:before {
+      border-bottom-color: hsl(0,0%,93%);
+      z-index: 20;
+    }
+
+    &:after {
+      margin-top: 1px;
+      border-bottom-color: hsl(0,0%,99%);
+      z-index: 21;
     }
   }
 }
