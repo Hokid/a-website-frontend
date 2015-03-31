@@ -9,16 +9,16 @@
     vertical-align: text-bottom;
     color: $glyph-color;
 
-    > .ico {
+    &__ico,
+    &__ico.ico {
       font-size: $glyph-size;
       line-height: $height;
     }
 
+    /// Медиа-запросы
     @include media-mx-w($screen-l) {
-
       @include h-margin(auto);
       @include h-pos(0);
-
       position: absolute;
       width: $glyph-size;
     }
