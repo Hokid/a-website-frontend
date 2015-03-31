@@ -2,7 +2,8 @@ html,
 body { @extend %u-view-height; }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-family: $font-family-default;
   background-color: $color-bg-page;
   color: $color-txt-page;
 }
