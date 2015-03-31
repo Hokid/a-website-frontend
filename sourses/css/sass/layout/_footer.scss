@@ -1,4 +1,9 @@
 .l-footer {
   @extend %u-footer;
-  min-width: em($width-page);
+  min-width: $width-page;
+
+  /// Медиа-запросы
+  @include media-mx-w($screen-l) {
+    min-width: $min-width-page;
+  }
 }

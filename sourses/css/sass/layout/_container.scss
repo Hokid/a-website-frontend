@@ -1,7 +1,11 @@
 .l-container {
-  width: em($width-page);
-  padding-left: em($h-padding);
-  padding-right: em($h-padding);
-  margin-left: auto;
-  margin-right: auto;
+  @include h-margin(auto);
+  @include h-padding($h-padding);
+  width: $width-page;
+
+  /// Медиа-запросы
+  @include media-mx-w($screen-l) {
+    @include h-margin(0);
+    width: auto;
+  }
 }

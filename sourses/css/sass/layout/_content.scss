@@ -1,17 +1,34 @@
 .l-content {
-  min-width: em($width-page);
+  min-width: $width-page;
   padding-top: $padding-top-content;
   padding-bottom: $padding-content;
+
+  /// Медиа-запросы
+  @include media-mx-w($screen-l) {
+    min-width: $min-width-page;
+  }
 }
 
 .l-main-col {
   max-width: percentage($width-main-col/$width-page);
   float: left;
+
+  /// Медиа-запросы
+  @include media-mx-w($screen-l) {
+    float: none;
+    max-width: none;
+  }
 }
 
 .l-sidebar {
+  @include h-padding(percentage($padding-content/$width-page));
   max-width: percentage($width-sidebar/$width-page);
-  padding-left: percentage($padding-content/$width-page);
-  padding-right: percentage($padding-content/$width-page);
   float: right;
+
+  /// Медиа-запросы
+  @include media-mx-w($screen-l) {
+    @include h-padding(0);
+    float: none;
+    max-width: none;
+  }
 }

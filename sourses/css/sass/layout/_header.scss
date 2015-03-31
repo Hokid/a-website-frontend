@@ -1,5 +1,10 @@
 .l-header {
-  min-width: em($width-page);
-  height: em($height-header);
+  min-width: $width-page;
+  height: $height-header;
   background-color: $color-bg-header;
+
+  /// Медиа-запросы
+  @include media-mx-w($screen-l) {
+    min-width: $min-width-page;
+  }
 }
