@@ -10,31 +10,34 @@
 </head>
 <body>
   <div class="u-push-footer-down">
-    <header class="l-header">
+    <div class="l-header">
       <div class="l-container u-clearfix">
 
 
 
         <a href="#" class="logo u-pull-left"><!--
-       --><i class="ico ico--logo-head"></i><!--
+       --><i class="ico ico--logo-head logo__ico"></i><!--
      --></a>
 
 
 
-        <nav class="nav u-pull-left"><!--
+        <div class="nav u-pull-left">
+          <ul class="nav__box">
+            <li class="nav__item">
 
-       --><button class="nav__toggle" type="button"><!--
-         --><i class="ico ico--nav"></i>
-          </button>
+              <button class="btn btn--default nav__toggle js-nav-toggle" type="button">
+                <i class="ico ico--nav-1" style="margin:0;"></i>
+              </button>
 
-          <ul class="nav__box nav__box--responsive"><!--
-         --><li class="nav__item"><a class="nav__link" href="#">Портфолио</a></li><!--
-         --><li class="nav__item"><a class="nav__link" href="#">Блог</a></li><!--
-         --><li class="nav__item"><a class="nav__link" href="#">Контакты</a></li><!--
-         --><li class="nav__item"><a class="nav__link" href="#">Обо мне</a></li>
+              <ul class="nav__box nav__box--respons js-dropdown"><!--
+                 --><li class="nav__item nav__item--respons"><a class="nav__link nav__link--respons" href="#">Портфолио</a></li><!--
+                 --><li class="nav__item nav__item--respons"><a class="nav__link nav__link--respons" href="#">Блог</a></li><!--
+                 --><li class="nav__item nav__item--respons"><a class="nav__link nav__link--respons" href="#">Контакты</a></li><!--
+                 --><li class="nav__item nav__item--respons"><a class="nav__link nav__link--respons" href="#">Обо мне</a></li>
+              </ul>
+            </li>
           </ul>
-
-        </nav>
+        </div>
 
 
 
@@ -42,35 +45,13 @@
           <ul class="nav__box">
             <li class="nav__item u-leading-xs u-gutter-s">
 
-              <button class="btn btn--default" type="button"><!--
-             --><i class="ico ico--checkmark-2 btn__glyph"></i>Вход
+              <button class="btn btn--default js-nav-toggle" type="button"><!--
+             --><i class="ico ico--checkmark-2 btn__ico"></i>Вход
               </button>
 
-              <style>
-                .arrow {
-                  position: absolute;
-                  top: 100%;
-                  left: 25px;
-                  margin-top: -6px;
-                  border: 10px solid transparent;
-                  border-bottom-color: hsl(0,0%,93%);
-                  z-index: 1;
-                }
-                .arrow:before {
-                  content: "";
-                  position: absolute;
-                  top: -9px;
-                  left: -10px;
-                  border: 10px solid transparent;
-                  border-bottom-color: hsl(0,0%,99%);
-                  z-index: 2;
-                }
-              </style>
-              <i class="arrow"></i>
-
-              <div class="nav__dropdown-box nav__dropdown-box--right">
+              <div class="nav__dropdown-box nav__dropdown-box--right js-dropdown js-box" data-box="0">
                 <div class="nav__box-actions"><!--
-               --><button class="round-btn round-btn--close"><i class="ico ico--close-5"></i></button>
+               --><button class="round-btn round-btn--close js-box-close" data-owner-box="0" type="button"><i class="ico ico--close-5"></i></button>
                 </div>
                 <form class="form u-clear" action="">
                   <label class="label form__field-caption" for="email">E-mail</label>
@@ -81,20 +62,28 @@
                   <input class="txt-field form__field" id="password" type="text">
                   <fieldset class="fieldset form__fieldset">
                     <legend class="legend">Опции</legend>
-                    <label class="option option--responsive form__option" for="rememberMe"><!--
-                   --><input id="rememberMe" type="checkbox" hidden><!--
-                   --><i class="pseudo-checkbox option__checkbox"><i class="ico ico--checkmark-5"></i></i><!--
-                   --><span>Запомнить меня</span><!--
-                  --></label><!--
-                 --><label class="option option--responsive form__option" for="recoverPassword"><!--
-                   --><input id="recoverPassword" type="checkbox" hidden><!--
-                   --><i class="pseudo-checkbox is-checked option__checkbox"><i class="ico ico--checkmark-5"></i></i><!--
-                   --><span>Восстановить пароль</span><!--
-                 --></label>
+                    <div class="option option--respons form__option">
+                      <input class="u-hide" id="rememberMe" type="checkbox">
+                      <label class="option__handler" for="rememberMe">
+                        <i class="checkbox option__checkbox">
+                          <i class="ico ico--checkmark-5 checkbox__ico"></i>
+                        </i><!--
+                     --><span>Запомнить меня</span>
+                      </label>
+                    </div>
+                    <div class="option option--respons form__option">
+                      <input class="u-hide" id="recoverPassword" type="checkbox">
+                      <label class="option__handler" for="recoverPassword">
+                        <i class="checkbox option__checkbox">
+                          <i class="ico ico--checkmark-5 checkbox__ico"></i>
+                        </i><!--
+                     --><span>Восстановить пароль</span>
+                      </label>
+                    </div>
                   </fieldset>
                   <ul class="form__actions">
-                    <li class="form__action">
-                      <button class="btn btn--ok">ОK</button>
+                    <li class="form__action"><!--
+                       --><button class="btn btn--ok">ОK</button>
                     </li><!--
                  --><li class="form__action">
                       <button class="btn btn--default">Создать</button>
@@ -108,7 +97,7 @@
 
         </div>
       </div>
-    </header>
+    </div>
     <div class="l-content">
       <div class="l-container u-clearfix">
         <div class="l-main-col">
@@ -181,6 +170,7 @@
              --><samp>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto hic recusandae voluptate fugiat doloribus unde vero natus obcaecati provident iste.</samp><!--
            --></pre>
               <h3>Уведомления</h3>
+              <div class="msg">Стандартное</div>
               <div class="msg msg--info">Информируещее</div>
               <div class="msg msg--warning">Предупреждение</div>
               <div class="msg msg--danger">Ошибка/Опасноть</div>
@@ -336,5 +326,41 @@
   <footer class="l-footer">
     <div class="l-container"></div>
   </footer>
+
+  <!-- временный скрипт -->
+  <script>
+
+  ;(function(){
+
+    var toggles = document.querySelectorAll(".js-nav-toggle");
+    var closeBtns = document.querySelectorAll(".js-box-close");
+
+    Array.prototype.forEach.call(closeBtns,function(btn){
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        var box = document.querySelector("[data-box='"+this.dataset["ownerBox"]+"']");
+        box.parentElement.classList.remove("pointer");
+        box.style.display = "none";
+
+      });
+    });
+
+    Array.prototype.forEach.call(toggles,function(toggle){
+      toggle.addEventListener("click",function(e){
+        e.preventDefault();
+        displayToggle(this.parentElement.querySelector(".js-dropdown"));
+        this.parentElement.classList.toggle("pointer");
+      });
+    });
+
+    function displayToggle( el ) {
+      if(getComputedStyle(el).display !== "none") el.style.display = "none";
+      else el.style.display = "block";
+    }
+
+  })();
+
+
+  </script>
 </body>
 </html>
