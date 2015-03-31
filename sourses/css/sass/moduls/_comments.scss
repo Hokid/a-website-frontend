@@ -31,21 +31,25 @@
 
 
   .comments {
-    padding-top: 1px; /* 1 */
-    padding-bottom: 1px; /* 1 */
+    @include v-padding(1px); /* 1 */
 
     &__title {
       font-family: $font-family;
       line-height: 1.5;
-      padding-bottom: em(15px);
+      padding-bottom: 15px;
     }
 
     &__box {
       padding-top: 1px; /* 1 */
-      padding-bottom: em($v-padding-box);
+      padding-bottom: $v-padding-box;
 
       &--nested {
-        margin-left: em($margin-left-body);
+        margin-left: $margin-left-body;
+
+        /// Медиа-запросы
+        @include media-mx-w($screen-s) {
+          margin-left: 0;
+        }
       }
     }
 
@@ -53,37 +57,42 @@
 
     &__textarea {
       max-width: 100%;
-      min-height: em($min-height-textarea);
-      width: 100%;
+      min-width: 100%;
+      min-height: $min-height-textarea;
     }
 
-    &__item {
-      padding-top: em($v-padding-item);
-      padding-bottom: em($v-padding-item);
-    }
+    &__item { @include v-padding($v-padding-item); }
 
     &__ava {
-
-      @include size(em($ava-size));
-
+      @include size($ava-size);
+      display: block;
       float: left;
 
       img {
-
         @include size(100%);
+        vertical-align: middle;
+      }
 
-        display: block;
+      /// Медиа-запросы
+      @include media-mx-w($screen-s) {
+        float: none;
+        margin-bottom: 5px;
       }
     }
 
     &__body {
-      margin-left: em($margin-left-body);
+      margin-left: $margin-left-body;
       line-height: 1.3;
+
+      /// Медиа-запросы
+      @include media-mx-w($screen-s) {
+        margin-left: 0;
+      }
     }
 
     &__owner {
       display: inline;
-      margin-right: em(5px);
+      margin-right: 5px;
       font-weight: bold;
       color: $color-txt-owner;
 
@@ -92,33 +101,27 @@
     }
 
     &__meta {
+      @include h-padding(6px);
       display: inline;
-      padding-left: em(6px,14px);
-      padding-right: em(6px,14px);
+      font-size: 14px;
       background-color: #F0F0F0;
       border-radius: 3px;
       color: #A5A5A5;
-      font-size: em(14px);
     }
 
     &__txt {
-      padding-top: em(4px);
-      padding-bottom: em(4px);
+      @include v-padding(4px);
       font-family: $font-family;
       line-height: 1.3;
       color: $color-txt;
     }
 
-    &__actions {
-      padding-top: em(4px);
-      padding-bottom: em(4px);
-    }
+    &__actions { @include v-padding(4px); }
 
     &__action {
       display: inline-block;
-      vertical-align: middle;
 
-      & + & { margin-left: em(7px); }
+      & + & { margin-left: 7px; }
     }
   }
 }
