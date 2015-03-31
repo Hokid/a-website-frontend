@@ -1,4 +1,5 @@
 $width-page: 1000px;
+$min-width-page: 320px;
 $h-padding: 20px;
 $height-header: 50px;
 $height-footer: (50px/16px)*1em;
@@ -7,4 +8,6 @@ $width-sidebar: 360px;
 $padding-top-content: 100px;
 $padding-content: 50px;
 
+$font-family-default: 'Arial',sans-serif;
 $font-family-roboto: 'roboto','Arial',sans-serif;
+
