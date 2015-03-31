@@ -18,11 +18,11 @@
   .msg {
     position: relative;
     display: block;
-    padding: em(10px,$font-size);
+    padding: 10px;
     margin: 5px;
     font-family: $font-family;
     line-height: 1.2;
-    font-size: em($font-size);
+    font-size: $font-size;
     text-align: center;
     border: 1px solid $color-border-default;
     border-radius: 3px;
