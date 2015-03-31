@@ -15,73 +15,131 @@
 
 
   .form {
-    padding: em($padding);
+    padding: $padding;
     color: $color-txt;
 
-    &__actions {
-      padding-top: em(14px);
-      padding-bottom: em(14px);
-    }
+    &__actions { @include v-padding(14px); }
 
     &__action {
       display: inline-block;
 
-      & + & { margin-left: em(7px); }
+      & + & { margin-left: 7px; }
     }
 
+    &__field,
     &__field.txt-field {
       display: block;
       width: 100%;
-      margin-bottom: em(15px);
+      margin-bottom: 15px;
 
       &:last-of-type { margin-bottom: 0; }
     }
 
+    &__field-caption,
     &__field-caption.label {
       display: block;
-      margin-left: em(7px);
-      margin-bottom: em(4px);
+      margin-left: 7px;
+      margin-bottom: 4px;
     }
 
+    &__fieldset,
     &__fieldset.fieldset {
       width: 100%;
-      margin-top: em(15px);
+      margin-top: 15px;
     }
 
-    &__option.option { display: block; }
+    &__option,
+    &__option.option {
+      display: block;
 
-    ///&__option + &__option { margin-top: em(8px); }
+      & + & { margin-top: 5px; }
+    }
   }
 
   .label,
   .legend {
-    font-size: em(13px);
+    font-size: 13px;
     line-height: (16/13);
   }
 
   .fieldset {
-    margin-left: 0;
-    margin-right: 0;
-    padding: em(12px);
+    @include h-margin(0);
+    padding: 12px;
     line-height: (24/16);
     border: 1px solid $color-border;
     border-radius: 5px;
   }
-
-  .option {
-    display: inline-block;
-
-    span { font-size: em(14px); }
-
-    &__checkbox.pseudo-checkbox { margin-right: 4px; }
-
-    &--responsive {}
-  }
-
 }
 
 
-// Чекбокс
+
+/**
+ * Элемент опция
+ *
+ * Структура HTMl:
+ *
+ *   .option
+ *     input[type="checkbox"]
+ *     .option__handler
+ *       .option__checkbox.checkbox
+ *         .option__ico.ico
+ *       span{Текст}
+ */
+
+@at-root {
+
+  /// Параметры
+  $font-size: 14px;
+  $respons-v-padding: 6px;
+  $respons-h-padding: 8px;
+
+  /// Цвета
+  $color-bg: hsl(54, 100%, 93%);
+  $color-border: hsl(0,0%,93%);
+
+
+
+  .option {
+    display: inline-block;
+    font-size: $font-size;
+
+    &__checkbox,
+    &__checkbox.checkbox { margin-right: 4px; }
+
+    input[type="checkbox"]:checked + &__handler {
+
+      > .checkbox:not(.is-checked) {
+        background-color: lighten($color-bg,4%);
+
+        > .checkbox__ico,
+        > .checkbox__ico.ico { display: inline; }
+      }
+    }
+
+    /// Отзывчивость
+    &--respons {
+
+      @include media-mx-w($screen-l) {
+
+        .option__handler {
+          display: block;
+          padding: $respons-v-padding $respons-h-padding;
+          border: 1px solid $color-border;
+          border-radius: 3px;
+          background-color: lighten($color-bg,5%);
+        }
+
+        input[type="checkbox"]:checked + .option__handler {
+          background-color: $color-bg;
+        }
+      }
+    }
+  }
+}
+
+
+
+/// Чекбокс
 
 @at-root {
 
@@ -97,25 +155,26 @@
 
 
 
-  .pseudo-checkbox {
-
-    @include size(em($size,$font-size));
-
+  .checkbox {
+    @include size($size);
     display: inline-block;
-    vertical-align: middle;
-    padding: em($padding,$font-size);
-    font-size: em($font-size);
+    vertical-align: text-bottom;
+    padding: $padding;
+    font-size: $font-size;
+    line-height: 1;
     border: 1px solid $color-border;
     background-color: $color-bg;
     color: $color-txt;
 
-    > .ico { display: none; }
+    &__ico,
+    &__ico.ico { display: none; }
 
-    input[type="checkbox"]:checked + &:not(.is-checked),
-    &.is-checked {
+    &.is-checked,
+    input[type="checkbox"]:checked + &:not(.is-checked) {
       background-color: lighten($color-bg,4%);
 
-      > .ico { display: inline; }
+      > .checkbox__ico,
+      > .checkbox__ico.ico { display: inline; }
     }
   }
 }
@@ -141,8 +200,8 @@
 
   .txt-field,
   .textarea {
-    padding: em(8px,$font-size);
-    font-size: em($font-size);
+    padding: 8px;
+    font-size: $font-size;
     background-color: $color-bg;
     line-height: 1;
     outline: 0;
