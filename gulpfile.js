@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     server = require("gulp-server-livereload"),
     del = require("del"),
     htmlmin = require("gulp-htmlmin"),
-    rubySass = require("gulp-ruby-sass");
+    rubySass = require("gulp-ruby-sass"),
+    htmlTagInclude = require("gulp-html-tag-include");
 
 
 
@@ -47,6 +48,12 @@ var opts = {
 
     htmlmin: {
       removeComments: true
+    },
+
+    htmlTagInclude: {
+      // tagName: string, default include
+      autoIndent: false//boolean, default true
+      // prefixVar: string, default @@
     }
 
 };
@@ -67,21 +74,21 @@ var opts = {
  * До запуска слежки выполняется:
  *   1. Сборка SASS
  *   2. Запуск лок. сервера
- *   3. Минификация HTML
+ *   3. Сборка HTML
  *   4. Сборка изображений
  *   5. Сборка иконочных шрифтов
  *
  * Во время слежки выполняется:
  *   1. Сборка SASS
- *   2. Минификация HTML
+ *   2. Сборка HTML
  *   3. Сборка изображений
  *   4. Сборка иконочных шрифтов
  */
 
-gulp.task('watch', [ "ruby-sass", "htmlmin", "server", "img", "glyphicons" ], function(){
+gulp.task('watch', [ "ruby-sass", "html", "server", "img", "glyphicons" ], function(){
 
     gulp.watch( path.src.sass + "**/*.scss", ["ruby-sass"] );
-    gulp.watch( path.src.html + "*.html", ["htmlmin"] );
+    gulp.watch( path.src.html + "**/*.html", ["html"] );
     gulp.watch( path.src.img + "**/*", ["img"] );
     gulp.watch( path.src.glyphicons + "**/*", ["glyphicons"] );
 });
@@ -90,7 +97,7 @@ gulp.task('watch', [ "ruby-sass", "htmlmin", "server", "img", "glyphicons" ], fu
 
 // Полная сборка проэкта
 
-gulp.task('build', [ "ruby-sass", "htmlmin", "img", "glyphicons" ], function(){});
+gulp.task('build', [ "ruby-sass", "html", "img", "glyphicons" ], function(){});
 
 
 
@@ -121,13 +128,18 @@ gulp.task('ruby-sass', function(){
 
 
 
-// Минификация HTML
+/**
+ * Сборка HTML:
+ *   1. Сборка шаблонов(gulp-html-tag-include)
+ *   2. Минификация(gulp-htmlmin)
+ */
 
-gulp.task("htmlmin", function(){
+gulp.task("html", function(){
 
   del( path.build.root + "*.html", function( err, deletedFiles ){});
 
   gulp.src( path.src.html + "*.html" )
+    .pipe( htmlTagInclude(opts.htmlTagInclude) )
     .pipe( htmlmin( opts.htmlmin ) )
     .pipe( gulp.dest( path.build.root ) );
 
