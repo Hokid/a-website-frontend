@@ -1,0 +1,33 @@
+<script>
+
+;(function(){
+
+  var toggles = document.querySelectorAll(".js-nav-toggle");
+  var closeBtns = document.querySelectorAll(".js-box-close");
+
+  Array.prototype.forEach.call(closeBtns,function(btn){
+    btn.addEventListener("click",function(e){
+      e.preventDefault();
+      var box = document.querySelector("[data-box='"+this.dataset["ownerBox"]+"']");
+      box.parentElement.classList.remove("pointer");
+      box.style.display = "none";
+
+    });
+  });
+
+  Array.prototype.forEach.call(toggles,function(toggle){
+    toggle.addEventListener("click",function(e){
+      e.preventDefault();
+      displayToggle(this.parentElement.querySelector(".js-dropdown"));
+      this.parentElement.classList.toggle("pointer");
+    });
+  });
+
+  function displayToggle( el ) {
+    if(getComputedStyle(el).display !== "none") el.style.display = "none";
+    else el.style.display = "block";
+  }
+
+})();
+
+</script>
