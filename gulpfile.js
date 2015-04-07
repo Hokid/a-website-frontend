@@ -5,7 +5,7 @@
 
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    server = require("gulp-server-livereload"),
+    browserSync = require("browser-sync"),
     del = require("del"),
     htmlmin = require("gulp-htmlmin"),
     rubySass = require("gulp-ruby-sass"),
@@ -41,9 +41,28 @@ var opts = {
 
     sass: { outputStyle: "expanded" },
 
-    server : {
-      livereload: true,
-      directoryListning: true
+    browserSync : {
+
+      server: {
+        baseDir: path.build.root
+      },
+
+      port: 8000,
+
+      ui: false,
+
+      online: false,
+
+      open: false,
+
+      files: path.build.root + "**/*",
+
+      notify: false,
+
+      ghostMod: false,
+
+      logPrefix: "a-website"
+
     },
 
     htmlmin: {
@@ -52,7 +71,7 @@ var opts = {
 
     htmlTagInclude: {
       // tagName: string, default include
-      autoIndent: false//boolean, default true
+      autoIndent: false //boolean, default true
       // prefixVar: string, default @@
     }
 
@@ -85,7 +104,7 @@ var opts = {
  *   4. Сборка иконочных шрифтов
  */
 
-gulp.task('watch', [ "ruby-sass", "html", "server", "img", "glyphicons" ], function(){
+gulp.task('watch', [ "ruby-sass", "html", "img", "glyphicons","server" ], function(){
 
     gulp.watch( path.src.sass + "**/*.scss", ["ruby-sass"] );
     gulp.watch( path.src.html + "**/*.html", ["html"] );
@@ -151,8 +170,7 @@ gulp.task("html", function(){
 
 gulp.task("server", function(){
 
-  gulp.src( path.build.root )
-    .pipe( server( opts.server ) );
+  browserSync(opts.browserSync);
 
 });
 
