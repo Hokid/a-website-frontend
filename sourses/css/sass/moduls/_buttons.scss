@@ -26,10 +26,16 @@
     background: #fff;
 
     &__ico,
-    &__ico.ico {
+    &__ico.ico,
+    &__only-ico,
+    &__only-ico.ico {
       vertical-align: text-bottom;
-      margin-right: 3px;
       font-size: $ico-size;
+    }
+
+    &__ico,
+    &__ico.ico {
+      margin-right: 3px;
     }
   }
 
@@ -98,6 +104,48 @@
       box-shadow: 0 0 $shadow $color-shadow;
     }
   }
+
+  .btn.is-disable {
+
+    /// Цвета
+    $color-bg-default: hsl(0,0%,91%);
+    $color-bg: lighten($color-bg-default,5%);
+    $color-txt: darken($color-bg-default,25%);
+    $color-grad-start: lighten($color-bg-default,3%);
+    $color-grad-end: $color-bg-default;
+
+
+
+    background-color: $color-bg;
+    @include v-gradient($color-grad-end,$color-grad-start);
+    border-color: darken($color-bg-default,2%);
+    color: $color-txt;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .btn-group {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: text-bottom;
+    white-space: nowrap;
+
+    > .btn {
+      border-radius: 0;
+      margin-left: -1px;
+    }
+
+    > .btn:first-child {
+      @include border-left-radius(3px);
+    }
+
+    > .btn:last-child,
+    > .btn.is-last {
+      @include border-right-radius(3px);
+    }
+  }
+
 }
 
 
@@ -130,7 +178,20 @@
     background: #fff;
   }
 
-  .round-btn--close {
+  .round-btn--default {
+    background-color: hsl(0,0%,95%);
+    color: hsl(0,0%,60%);
+    border-color: hsl(0,0%,90%);
+
+    &:hover,
+    &:focus {
+      border-color: hsl(0,0%,20%);
+    }
+
+    &:active { background-color: hsl(0,0%,90%); }
+  }
+
+  .round-btn--danger {
     background-color: $color-bg-close;
     color: $color-txt-close;
 
