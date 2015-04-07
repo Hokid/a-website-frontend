@@ -1,71 +1,63 @@
-<div class="nav u-pull-right">
-  <ul class="nav__box">
-    <li class="nav__item u-leading-xs u-gutter-s">
+<ul class="nav u-pull-right">
 
-      <button class="btn btn--default js-nav-toggle" type="button">
-        <i class="ico ico--checkmark-2 btn__ico"></i>Вход
-      </button>
+  <li class="nav__item u-leading-xs u-h-gutter-s">
 
-      <div class="nav__dropdown-box nav__dropdown-box--right js-dropdown js-box" data-box="0">
+    <button class="btn btn--default js-nav-toggle" type="button">
+      <i class="ico ico--checkmark-2 btn__ico"></i>Вход
+    </button>
 
-        <div class="nav__box-actions">
-          <button class="round-btn round-btn--close js-box-close" data-owner-box="0" type="button">
-            <i class="ico ico--close-5"></i>
-          </button>
-        </div>
+    <div class="dropdown-box dropdown-box--right nav__dropdown-box js-dropdown js-box" data-box="0">
 
-        <form class="form u-clear" action="">
-
-          <label class="label form__field-caption" for="email">E-mail</label>
-          <input class="txt-field form__field" id="email" type="text">
-
-          <label class="label form__field-caption" for="login">Логин</label>
-          <input class="txt-field form__field" id="login" type="text">
-
-          <label class="label form__field-caption" for="password">Пароль</label>
-          <input class="txt-field form__field" id="password" type="text">
-
-          <fieldset class="fieldset form__fieldset">
-            <legend class="legend">Опции</legend>
-
-            <div class="option option--respons form__option">
-              <input class="u-hide" id="rememberMe" type="checkbox">
-              <label class="option__handler" for="rememberMe">
-                <i class="checkbox option__checkbox">
-                  <i class="ico ico--checkmark-5 checkbox__ico"></i>
-                </i><!--
-             --><span>Запомнить меня</span>
-              </label>
-            </div>
-
-            <div class="option option--respons form__option">
-              <input class="u-hide" id="recoverPassword" type="checkbox">
-              <label class="option__handler" for="recoverPassword">
-                <i class="checkbox option__checkbox">
-                  <i class="ico ico--checkmark-5 checkbox__ico"></i>
-                </i><!--
-             --><span>Восстановить пароль</span>
-              </label>
-            </div>
-
-          </fieldset>
-
-          <ul class="form__actions">
-
-            <li class="form__action">
-              <button class="btn btn--ok">ОK</button>
-            </li><!--
-
-         --><li class="form__action">
-              <button class="btn btn--default">Создать</button>
-            </li>
-
-          </ul>
-
-        </form>
-
+      <div class="dropdown-box__actions">
+        <button class="round-btn round-btn--danger js-box-close" data-owner-box="0" type="button">
+          <i class="ico ico--close-5"></i>
+        </button>
       </div>
 
-    </li>
-  </ul>
-</div>
+      <form class="form" action="">
+
+        <label class="label form__field-caption" for="email">E-mail</label>
+        <input class="txt-field form__field" id="email" type="text">
+
+        <label class="label form__field-caption" for="login">Логин</label>
+        <input class="txt-field form__field" id="login" type="text">
+
+        <label class="label form__field-caption" for="password">Пароль</label>
+        <input class="txt-field form__field" id="password" type="text">
+
+        <fieldset class="fieldset form__fieldset">
+          <legend class="legend">Опции</legend>
+
+          <div class="option option--respons form__option">
+            <input class="u-hide" id="rememberMe" type="checkbox">
+            <label class="option__handler" for="rememberMe">
+              <i class="checkbox option__checkbox">
+                <i class="ico ico--checkmark-5 checkbox__ico"></i>
+              </i><!--
+           --><span>Запомнить меня</span>
+            </label>
+          </div>
+
+          <div class="option option--respons form__option">
+            <input class="u-hide" id="recoverPassword" type="checkbox">
+            <label class="option__handler" for="recoverPassword">
+              <i class="checkbox option__checkbox">
+                <i class="ico ico--checkmark-5 checkbox__ico"></i>
+              </i><!--
+           --><span>Восстановить пароль</span>
+            </label>
+          </div>
+
+        </fieldset>
+
+        <div class="u-leading-s">
+          <button class="btn btn--ok u-h-gutter-xxs">ОK</button>
+          <button class="btn btn--default u-h-gutter-xxs">Создать</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </li>
+</ul>
