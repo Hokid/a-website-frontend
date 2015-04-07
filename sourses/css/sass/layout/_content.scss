@@ -30,5 +30,6 @@
     @include h-padding(0);
     float: none;
     max-width: none;
+    &:not(:first-child) { margin-top: 50px; }
   }
 }
