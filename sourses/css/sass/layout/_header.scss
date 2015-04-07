@@ -1,7 +1,7 @@
 .l-header {
   min-width: $width-page;
   height: $height-header;
-  background-color: $color-bg-header;
+  //background-color: $color-bg-header;
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {

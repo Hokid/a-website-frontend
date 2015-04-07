@@ -1,0 +1,20 @@
+@at-root {
+
+  /// Праметры
+  $border-radius: 10px;
+
+  /// Цвета
+  $color-bg: $color-bg-header;
+  $color-shadow: hsl(0,0%,85%);
+
+
+
+  .header {
+    position: relative;
+    background-color: $color-bg;
+    @include v-gradient($color-bg,darken($color-bg,5%));
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    box-shadow: 0 3px 5px $color-shadow;
+  }
+}
