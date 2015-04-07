@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<include src="templates/_conditional-comments.html"></include>
+
+  <include src="templates/_head.html" title="Профиль"></include>
+
+<body>
+
+  <div class="u-push-footer-down">
+
+
+    <include src="templates/_header.html"></include>
+
+
+    <div class="l-content">
+      <div class="l-container u-clearfix">
+
+
+        <include src="templates/_user-board.html"></include>
+
+
+        <div class="user-col">
+
+            <div class="u-respons-h-list js-respons-btn">
+              <div class="btn-group">
+                <button class="btn btn--default" type="button">Публикации</button><!--
+             --><button class="btn btn--default" type="button">Комментарии</button>
+              </div><!--
+          --><button class="btn btn--default u-h-gutter-xs js-dropdown-toggle" type="button">
+                <i class="ico ico--more-v btn__only-ico"></i>
+              </button>
+              <ul class="dropdown-box dropdown-box--right js-dropdown"></ul>
+            </div>
+
+
+            <hr>
+
+
+            <include src="templates/_publications-pub.html"></include>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <include src="templates/_footer.html"></include>
+  <include src="templates/_script.html"></include>
+
+
+</body>
+</html>
