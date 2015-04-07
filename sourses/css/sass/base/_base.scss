@@ -1,9 +1,12 @@
 html,
 body { @extend %u-view-height; }
 
-body {
+html {
   font-size: 16px;
   font-family: $font-family-default;
+}
+
+body {
   background-color: $color-bg-page;
   color: $color-txt-page;
 }
