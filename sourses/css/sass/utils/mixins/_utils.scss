@@ -1,0 +1,40 @@
+/**
+ * Создание отдельных стилей для Internet Explorer
+ * @param {string} $postfix:''
+ */
+@mixin IE($postfix:'') {
+  .IE#{$postfix} & { @content; }
+}
+
+
+
+/**
+ * Исправляет проблему перекрытия задним фоном границ у ячеек таблицы
+ * с относительным позифионированием.
+ * Происходит при border-collapse: collapse.
+ *
+ * !!! z-index лучше не использовать, если поверх ячейки будет элемент
+ * с абсолютным, фиксированным позиционированием. Ячейка всегда будет
+ * сверху, независимо от z-index элемента.
+ * !!! background-clip не поддепживется в IE 8.
+ *
+ * Наблюдается в: IE8+(версии ниже не проверены)
+ * Для элементов: td, th
+ *
+ * @param  {string} $way [bg-clip, z]
+ */
+@mixin cell-relative($way) {
+  position: relative;
+
+  @if $way == 'bg-clip' {
+    @include IE() { background-clip: padding-box; }
+  }
+
+  @if $way == 'z' {
+    @include IE() { z-index: -1; }
+  }
+}
+
+
+// На будущее
+@mixin margin-collapse-fix() {}

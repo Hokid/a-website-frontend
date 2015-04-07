@@ -1,8 +1,14 @@
 .u-push-footer-down { @extend %u-push-footer-down; }
-.u-pull-right { float: right; }
-.u-pull-left { float: left; }
+.u-pull-right { float: right !important; }
+.u-pull-left { float: left !important; }
 .u-clearfix { @extend %u-clearfix; }
-.u-hide { display: none; }
+.u-relative { position: relative !important; }
+.u-inline-block { display: inline-block !important; }
+.u-block { display: block !important; }
+.u-inline { display: inline !important; }
+.u-hide { display: none !important; }
+
+
 
 /// Leading-и(вертикальные отступы)
 
@@ -18,10 +24,59 @@
 
 /// расстояние между элементами
 
-.u-gutter-xxs { @extend %u-gutter-xxs; }
-.u-gutter-xs  { @extend %u-gutter-xs;  }
-.u-gutter-s   { @extend %u-gutter-s;   }
-.u-gutter-m   { @extend %u-gutter-m;   }
-.u-gutter-l   { @extend %u-gutter-l;   }
-.u-gutter-xl  { @extend %u-gutter-xl;  }
-.u-gutter-xxl { @extend %u-gutter-xxl; }
+.u-h-gutter-xxs { @extend %u-h-gutter-xxs; }
+.u-h-gutter-xs  { @extend %u-h-gutter-xs;  }
+.u-h-gutter-s   { @extend %u-h-gutter-s;   }
+.u-h-gutter-m   { @extend %u-h-gutter-m;   }
+.u-h-gutter-l   { @extend %u-h-gutter-l;   }
+.u-h-gutter-xl  { @extend %u-h-gutter-xl;  }
+.u-h-gutter-xxl { @extend %u-h-gutter-xxl; }
+
+.u-v-gutter-xxs { @extend %u-v-gutter-xxs; }
+.u-v-gutter-xs  { @extend %u-v-gutter-xs;  }
+.u-v-gutter-s   { @extend %u-v-gutter-s;   }
+.u-v-gutter-m   { @extend %u-v-gutter-m;   }
+.u-v-gutter-l   { @extend %u-v-gutter-l;   }
+.u-v-gutter-xl  { @extend %u-v-gutter-xl;  }
+.u-v-gutter-xxl { @extend %u-v-gutter-xxl; }
+
+
+
+// Скрытие элемента после достижения определенного размера экрана
+
+.u-hide-after-s  { @extend %u-hide-after-s;  }
+.u-hide-after-m  { @extend %u-hide-after-m;  }
+.u-hide-after-l  { @extend %u-hide-after-l;  }
+.u-hide-after-xl { @extend %u-hide-after-xl; }
+
+
+
+// Скрытие элемента до достижения определенного размера экрана
+
+.u-hide-before-s  { @extend %u-hide-before-s;  }
+.u-hide-before-m  { @extend %u-hide-before-m;  }
+.u-hide-before-l  { @extend %u-hide-before-l;  }
+.u-hide-before-xl { @extend %u-hide-before-xl; }
+
+
+/**
+ * Горизонтальный список, который постепено становится
+ * dropdown списком при уменьшении ширины радителя.
+ *
+ * Структура HTML:
+ *
+ *   .u-respons-h-list.js-respons-h-list
+ *     [list]
+ *     [toggle].js-dropdown-toggle
+ *     [dropdown].js-dropdown
+ *
+ * [Описание работы скрипта(возможно)]
+ */
+
+.u-respons-h-list {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  vertical-align: text-bottom;
+  white-space: nowrap;
+}

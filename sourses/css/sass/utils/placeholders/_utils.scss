@@ -46,26 +46,92 @@ $height-footer: 70px !default;
 
 /// Leading-и(вертикальные отступы)
 
-$leading-step: 5px;
+$u-leading-step: 5px !default;
 
-%u-leading-xxs { @include v-padding($leading-step);   }
-%u-leading-xs  { @include v-padding($leading-step*2); }
-%u-leading-s   { @include v-padding($leading-step*3); }
-%u-leading-m   { @include v-padding($leading-step*4); }
-%u-leading-l   { @include v-padding($leading-step*5); }
-%u-leading-xl  { @include v-padding($leading-step*6); }
-%u-leading-xxl { @include v-padding($leading-step*7); }
+%u-leading-xxs { @include v-padding($u-leading-step   !important);   }
+%u-leading-xs  { @include v-padding($u-leading-step*2 !important); }
+%u-leading-s   { @include v-padding($u-leading-step*3 !important); }
+%u-leading-m   { @include v-padding($u-leading-step*4 !important); }
+%u-leading-l   { @include v-padding($u-leading-step*5 !important); }
+%u-leading-xl  { @include v-padding($u-leading-step*6 !important); }
+%u-leading-xxl { @include v-padding($u-leading-step*7 !important); }
 
 
 
 /// расстояние между элементами
 
-$gutter-step: 5px;
+$u-h-gutter-step: 5px !default;
+$u-v-gutter-step: 5px !default;
 
-%u-gutter-xxs { margin-left: $gutter-step;   &:first-child { margin-left: 0; } }
-%u-gutter-xs  { margin-left: $gutter-step*2; &:first-child { margin-left: 0; } }
-%u-gutter-s   { margin-left: $gutter-step*3; &:first-child { margin-left: 0; } }
-%u-gutter-m   { margin-left: $gutter-step*4; &:first-child { margin-left: 0; } }
-%u-gutter-l   { margin-left: $gutter-step*5; &:first-child { margin-left: 0; } }
-%u-gutter-xl  { margin-left: $gutter-step*6; &:first-child { margin-left: 0; } }
-%u-gutter-xxl { margin-left: $gutter-step*7; &:first-child { margin-left: 0; } }
+%u-h-gutter-xxs { margin-left: $u-h-gutter-step   !important; &:first-child { margin-left: 0 !important; } }
+%u-h-gutter-xs  { margin-left: $u-h-gutter-step*2 !important; &:first-child { margin-left: 0 !important; } }
+%u-h-gutter-s   { margin-left: $u-h-gutter-step*3 !important; &:first-child { margin-left: 0 !important; } }
+%u-h-gutter-m   { margin-left: $u-h-gutter-step*4 !important; &:first-child { margin-left: 0 !important; } }
+%u-h-gutter-l   { margin-left: $u-h-gutter-step*5 !important; &:first-child { margin-left: 0 !important; } }
+%u-h-gutter-xl  { margin-left: $u-h-gutter-step*6 !important; &:first-child { margin-left: 0 !important; } }
+%u-h-gutter-xxl { margin-left: $u-h-gutter-step*7 !important; &:first-child { margin-left: 0 !important; } }
+
+%u-v-gutter-xxs { margin-top: $u-v-gutter-step   !important; &:first-child { margin-top: 0 !important; } }
+%u-v-gutter-xs  { margin-top: $u-v-gutter-step*2 !important; &:first-child { margin-top: 0 !important; } }
+%u-v-gutter-s   { margin-top: $u-v-gutter-step*3 !important; &:first-child { margin-top: 0 !important; } }
+%u-v-gutter-m   { margin-top: $u-v-gutter-step*4 !important; &:first-child { margin-top: 0 !important; } }
+%u-v-gutter-l   { margin-top: $u-v-gutter-step*5 !important; &:first-child { margin-top: 0 !important; } }
+%u-v-gutter-xl  { margin-top: $u-v-gutter-step*6 !important; &:first-child { margin-top: 0 !important; } }
+%u-v-gutter-xxl { margin-top: $u-v-gutter-step*7 !important; &:first-child { margin-top: 0 !important; } }
+
+
+
+// Скрытие элемента после достижения определенного размера экрана
+// +1px чтобы не было разногласий с max-width
+
+%u-hide-after-s {
+  @media screen and (min-width: ($screen-s)+1px) {
+    display: none !important;
+  }
+}
+
+%u-hide-after-m {
+  @media screen and (min-width: ($screen-m)+1px) {
+    display: none !important;
+  }
+}
+
+%u-hide-after-l {
+  @media screen and (min-width: ($screen-l)+1px) {
+    display: none !important;
+  }
+}
+
+%u-hide-after-xl {
+  @media screen and (min-width: ($screen-xl)+1px) {
+    display: none !important;
+  }
+}
+
+
+
+// Скрытие элемента до достижения определенного размера экрана
+
+%u-hide-before-s {
+  @media screen and (max-width: $screen-s) {
+    display: none !important;
+  }
+}
+
+%u-hide-before-m {
+  @media screen and (max-width: $screen-m) {
+    display: none !important;
+  }
+}
+
+%u-hide-before-l {
+  @media screen and (max-width: $screen-l) {
+    display: none !important;
+  }
+}
+
+%u-hide-before-xl {
+  @media screen and (max-width: $screen-xl) {
+    display: none !important;
+  }
+}
