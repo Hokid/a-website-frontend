@@ -9,7 +9,7 @@
   $grid-columns: 12 !default;
 
   /// Отступы между колонками в %
-  $grid-gutters-size: 0 !default;
+  $grid-gutter-size: 0 !default;
 
   /// В случае, если глобально не задано
   $grid-box-sizing: false !default;
@@ -20,17 +20,18 @@
   .grid-row { @extend %u-clearfix; }
 
   /// Базовый класс для колонки без отступов
-  .grid-col {
+  .grid {
     position: relative;
     float: left;
     @if $grid-box-sizing { box-sizing: border-box; }
   }
 
   /// Если заданы отступы, то генерируется дополнительный базовый класс
-  @if $grid-gutters-size > 0 {
-    .grid-m-col {
-      @extend .grid-col;
-      & + & { margin-left: $grid-gutters-size; }
+  @if $grid-gutter-size > 0 {
+    .grid-offset {
+      @extend .grid;
+      margin-left: $grid-gutter-size;
+      &:first-child { margin-left: 0; }
     }
   }
 
@@ -39,11 +40,11 @@
   @for $i from 1 to $grid-columns {
 
     /// Без отступов
-    .grid-col--#{$i} { width: ( $i/$grid-columns*100% ); }
+    .grid--#{$i} { width: ( $i/$grid-columns*100% ); }
 
     /// С отступами
-    @if $grid-gutters-size > 0 {
-      .grid-m-col--#{$i} { width: ( $i/$grid-columns*100% - $grid-gutters-size ); }
+    @if $grid-gutter-size > 0 {
+      .grid-offset--#{$i} { width: ( $i/$grid-columns*100% - $grid-gutter-size ); }
     }
   }
 
