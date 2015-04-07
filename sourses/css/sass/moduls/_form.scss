@@ -18,14 +18,6 @@
     padding: $padding;
     color: $color-txt;
 
-    &__actions { @include v-padding(14px); }
-
-    &__action {
-      display: inline-block;
-
-      & + & { margin-left: 7px; }
-    }
-
     &__field,
     &__field.txt-field {
       display: block;

@@ -22,31 +22,20 @@
           top: $height;
           margin-top: 14px;
           width: $width-dropdown-box;
+          z-index: $z-index-dropdown-box;
         }
       }
 
       /// Временно
-      @media screen and (min-width: $screen-l) {
+      @media screen and (min-width: ($screen-l)+1px) {
         display: block !important;
       }
     }
 
-    &__dropdown-box {
-      @include overlay-box();
-      @include v-padding(4px);
-      display: none;
-      position: absolute;
+    &__dropdown-box.dropdown-box {
       top: $height;
       margin-top: 14px;
       width: $width-dropdown-box;
-
-      &--right { right: 0; }
-    }
-
-    &__box-actions {
-      @include h-padding(4px);
-      line-height: 1;
-      text-align: right;
     }
 
     &__item {
@@ -114,24 +103,26 @@
 
     /// Временно
     &__toggle.btn {
+      @extend %u-hide-after-l;
       @include v-margin(10px);
-      display: none;
-
-      > .ico { font-size: 18px; }
-
-      @include media-mx-w($screen-l) {
-        display: inline-block;
-      }
     }
   }
 
   /**
    * Декоративная стрелочка к dropdown-box.
-   * Рассчитана на использование только header-е.
+   * Рассчитана на использование только в header-е.
    * Добавляется(в основном) к .nav__item посредством JS
    * при активации dropdown-box.
    */
+
   .pointer {
+
+    /// Параметры
+    $z-index-before: $z-index-pointer-before;
+    $z-index-after: $z-index-pointer-after;
+
+
+
     position: relative;
 
     &:before,
@@ -146,13 +137,13 @@
 
     &:before {
       border-bottom-color: hsl(0,0%,93%);
-      z-index: 20;
+      z-index: $z-index-before;
     }
 
     &:after {
       margin-top: 1px;
       border-bottom-color: hsl(0,0%,99%);
-      z-index: 21;
+      z-index: $z-index-after;
     }
   }
 }

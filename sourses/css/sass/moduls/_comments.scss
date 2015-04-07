@@ -94,10 +94,6 @@
       display: inline;
       margin-right: 5px;
       font-weight: bold;
-      color: $color-txt-owner;
-
-      &:hover,
-      &:focus { text-decoration: underline; }
     }
 
     &__meta {
