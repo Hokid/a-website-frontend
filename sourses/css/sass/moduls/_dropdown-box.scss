@@ -1,0 +1,39 @@
+@at-root {
+
+  /// Параметры
+  $z-index: $z-index-dropdown-box;
+
+
+
+  .dropdown-box {
+    @include overlay-box();
+    @include v-padding(4px);
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: 6px;
+    min-width: 160px;
+    z-index: $z-index;
+
+    &--right { right: 0; }
+
+    &__item + &__item { border-top: 1px solid hsl(0,0%,93%); }
+
+    &__actions {
+      @include h-padding(4px);
+      text-align: right;
+      line-height: 1;
+    }
+
+    &__link {
+      display: block;
+      color: hsl(0,0%,50%);
+      padding: 10px 6px;
+
+      &:hover,
+      &:focus {
+        background-color: hsl(54, 100%, 93%);
+      }
+    }
+  }
+}

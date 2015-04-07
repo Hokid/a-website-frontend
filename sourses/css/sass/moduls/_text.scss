@@ -1,0 +1,9 @@
+@at-root {
+
+  .link {
+    color: hsl(196, 86%, 54%);
+
+    &:hover,
+    &:focus { text-decoration: underline; }
+  }
+}

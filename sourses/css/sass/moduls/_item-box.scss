@@ -1,0 +1,70 @@
+/**
+ * Пример структуры HTML:
+ *
+ * table.item-box
+ *   caption.&__title
+ *   thead
+ *     tr.&__row
+ *       td.&__cell
+ *   tbody.&__item
+ *     tr.&__row
+ *       td.&__cell
+ *   tfoot
+ *     tr.&__row
+ *       td.&__cell
+ *
+ *
+ * 1. Этот способ - альтернатива 'border-collapse: collapse'.
+ *    С 'border-collapse: collapse' проблема только в WebKit
+ *    движках(Safari, Chrome): если после элемента caption идет
+ *    элемент, который содержит элемент td с colspan > 1, и при этом
+ *    caption и все td имеют не 0-й border, а у таблицы выставлен
+ *    'border-collapse: collapse', то ширина caption становится на 1px
+ *    меньше(уменьшается справой стороны) - это расхождение очень раздражает,
+ *    как в плане того, что оно есть, так в плане того, что оно только
+ *    на webkit(на сколько я заметил). Не знаю в чем причина такой бабуйни.
+ */
+
+@at-root {
+
+  .item-box {
+    width: 100%;
+    font-family: $font-family-default;
+    font-size: 14px;
+    line-height: normal;
+    // border-top: 1px solid hsl(0,0%,93%); /* 1 */
+    border-left: 1px solid hsl(0,0%,93%); /* 1 */
+    border-collapse: separate; /* 1 */
+
+
+    &__row {}
+
+    &__cell {
+      padding: 8px;
+      border-right: 1px solid hsl(0,0%,93%); /* 1 */
+      border-bottom: 1px solid hsl(0,0%,93%); /* 1 */
+      color: hsl(0,0%,30%);
+
+      &--cover { width: 1px; } // Описать
+    }
+
+    &__row--fill,
+    &__cell--fill {
+      background-color: hsl(0,0%,99%);
+    }
+
+    &__title {
+      @include border-top-radius(3px);
+      padding: 6px 8px;
+      font-weight: bold;
+      text-align: left;
+      line-height: 1;
+      border: 1px solid hsl(0,0%,93%);
+      border-bottom: none;
+      background-color: hsl(0,0%,97%);
+      color: hsl(0,0%,68%);
+    }
+
+    &__item {}
+  }
+}

@@ -1,0 +1,49 @@
+@at-root {
+
+  $width-user-board: 200px;
+  $font-size-title: 13px;
+  $v-padding-title: 4px;
+
+
+
+  .user-col {
+    margin-left: ($width-user-board)+60px;
+
+    /// Медиа-запросы
+    @include media-mx-w($screen-m) {
+      margin-left: 0;
+    }
+  }
+
+  .user-ava {
+    vertical-align: middle;
+    border-radius: 5px;
+
+    &--xxs { @include size(25px); }
+    &--xs { @include size(50px); }
+    &--s { @include size(75px); }
+    &--m { @include size(100px); }
+    &--l { @include size(145px); }
+    &--xl { @include size(200px); }
+    &--xxl { @include size(240px); }
+  }
+
+  .user-board {
+    width: $width-user-board;
+    float: left;
+    line-height: normal;
+
+    /// Медиа-запросы
+    @include media-mx-w($screen-m) {
+      width: auto;
+      float: none;
+      padding-bottom: 30px;
+    }
+  }
+
+  .user-status {
+    @include h-margin(5px);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+}

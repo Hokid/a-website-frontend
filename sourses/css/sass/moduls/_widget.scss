@@ -1,0 +1,33 @@
+@at-root {
+
+  /// Параметры
+  $width-user-board: 200px;
+  $font-size: 13px;
+  $padding-box: 10px;
+  $v-padding-title: 4px;
+
+
+
+  .widget {
+
+    &__title {
+      padding: $v-padding-title 8px;
+      font-family: $font-family-default;
+      font-size: $font-size;
+      line-height: 1;
+      background-color: hsl(0,0%,97%);
+      color: hsl(0,0%,68%);
+      border-left: 4px solid;
+    }
+
+    &__body,
+    &__box {
+      font-size: $font-size;
+      color: hsl(0,0%,50%);
+    }
+
+    &__box { padding: $padding-box; }
+
+    &__item {}
+  }
+}

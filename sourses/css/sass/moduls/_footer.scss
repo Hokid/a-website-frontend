@@ -1,0 +1,10 @@
+@at-root {
+
+  .footer {
+    @include v-padding(10px);
+    font-family: monospace;
+    color: hsl(0,0%,75%);
+    text-align: center;
+    font-size: 14px;
+  }
+}

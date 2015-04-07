@@ -1,0 +1,27 @@
+@at-root {
+
+  .mark-default {
+    background-color: hsl(0,0%,99%);
+    color: hsl(0,0%,50%);
+  }
+
+  .mark-info {
+    background-color: #EFFBFF;
+    color: #79BED7;
+  }
+
+  .mark-warning {
+    background-color: #FFFCE4;
+    color: #D7B679;
+  }
+
+  .mark-danger {
+    background-color: #FFEFEF;
+    color: #D77979;
+  }
+
+  .mark-success {
+    background-color: #EBFFDF;
+    color: #9FD779;
+  }
+}
