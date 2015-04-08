@@ -4,11 +4,11 @@
 // Подключаемые модули
 
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
     browserSync = require("browser-sync"),
     del = require("del"),
     htmlmin = require("gulp-htmlmin"),
     rubySass = require("gulp-ruby-sass"),
+    compass = require("gulp-compass"),
     htmlTagInclude = require("gulp-html-tag-include");
 
 
@@ -40,6 +40,18 @@ var path = {
 var opts = {
 
     sass: { outputStyle: "expanded" },
+
+    compass: {
+
+      sass: path.src.sass,
+
+      css: path.build.css,
+
+      style: "compressed",
+
+      time: true
+
+    },
 
     browserSync : {
 
@@ -91,11 +103,8 @@ var opts = {
  * Слежка за изменением файлов и запуск задач после изменения.
  *
  * До запуска слежки выполняется:
- *   1. Сборка SASS
+ *   1. Сборка проэкта
  *   2. Запуск лок. сервера
- *   3. Сборка HTML
- *   4. Сборка изображений
- *   5. Сборка иконочных шрифтов
  *
  * Во время слежки выполняется:
  *   1. Сборка SASS
@@ -104,9 +113,9 @@ var opts = {
  *   4. Сборка иконочных шрифтов
  */
 
-gulp.task('watch', [ "ruby-sass", "html", "img", "glyphicons","server" ], function(){
+gulp.task('watch', [ "build", "server" ], function(){
 
-    gulp.watch( path.src.sass + "**/*.scss", ["ruby-sass"] );
+    gulp.watch( path.src.sass + "**/*.scss", ["compass"] );
     gulp.watch( path.src.html + "**/*.html", ["html"] );
     gulp.watch( path.src.img + "**/*", ["img"] );
     gulp.watch( path.src.glyphicons + "**/*", ["glyphicons"] );
@@ -116,25 +125,24 @@ gulp.task('watch', [ "ruby-sass", "html", "img", "glyphicons","server" ], functi
 
 // Полная сборка проэкта
 
-gulp.task('build', [ "ruby-sass", "html", "img", "glyphicons" ], function(){});
+gulp.task('build', [ "compass", "html", "img", "glyphicons" ], function(){});
 
 
 
-// Компиляция SASS файлов(на основе node-sass/libsass)
+// Компиляция sass compass-м
 
-gulp.task('sass', function(){
+gulp.task('compass', function(){
 
   del( path.build.css + "style.css", function( err, deletedFiles ){});
 
   gulp.src( path.src.sass + "style.scss" )
-   .pipe( sass( opts.sass ) )
-   .pipe( gulp.dest( path.build.css ) );
+   .pipe( compass( opts.compass ) );
 
 });
 
 
 
-// Использовать эту сборку SASS(основана на Ruby) для поддержки всех фич(@at-root и т.п.)
+// Сборку SASS(основана на Ruby)
 
 gulp.task('ruby-sass', function(){
 
