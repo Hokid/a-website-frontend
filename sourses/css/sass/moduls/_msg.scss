@@ -5,8 +5,7 @@
 @at-root {
 
   /// Параметры
-  $font-family: $font-family-roboto;
-  $font-size: 13px;
+  $font-size: $font-size-s;
 
   /// Цвета
   $color-border-default: hsl(0,0%,90%);
@@ -16,15 +15,12 @@
 
 
   .msg {
+    @include adjust-font-size-to($font-size);
+    @include rhythm-borders(1px, 0.5);
     position: relative;
     display: block;
-    padding: 10px;
-    margin: 5px;
-    font-family: $font-family;
-    line-height: 1.2;
-    font-size: $font-size;
     text-align: center;
-    border: 1px solid $color-border-default;
+    border-color: $color-border-default;
     border-radius: 3px;
     background: $color-bg-default;
     color: $color-txt-default;

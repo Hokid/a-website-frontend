@@ -16,5 +16,16 @@
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     box-shadow: 0 3px 5px $color-shadow;
+
+    &__logo {
+
+      /// Медиа-запросы
+      @include media-mx-w($screen-l) {
+          @include h-margin(auto);
+          @include h-pos(0);
+          position: absolute;
+          width: 40px;
+      }
+    }
   }
 }

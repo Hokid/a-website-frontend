@@ -1,0 +1,119 @@
+%styled-text {
+
+  /// Заголовки
+
+  #{headings()} {
+
+    & + p,
+    & + ul,
+    & + ol,
+    & + dl,
+    & + div,
+    & + pre,
+    & + img,
+    & + blockquote {
+      @include margin-leader(1);
+    }
+  }
+
+
+
+  /// Блоки
+
+  p,
+  ul,
+  ol,
+  dl,
+  dd,
+  div,
+  pre,
+  img,
+  blockquote {
+    @include margin-trailer(1);
+
+    &:last-child {
+      @include margin-trailer(0);
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: $rhythm-one;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  dt {
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  dd {
+    margin-left: $rhythm-one;
+  }
+
+  pre {
+    @include margin-leader(0);
+    @include board(#222,#FF2042,#298ABD);
+    padding: $rhythm-one-half;
+
+    code, samp {
+      background: transparent;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    @include margin-leader(0);
+    @include h-margin(0);
+    @include board();
+    padding: $rhythm-one-half;
+  }
+
+
+
+  /// Инлайновые элементы
+
+  kbd {
+    @include h-padding(16px);
+    background-color: #efefef;
+    border-radius: 3px;
+    color: #6c6c6c;
+  }
+
+  dfn { font-weight: 600; }
+
+  del { color: #d5d5d5; }
+
+  ins {
+    text-decoration: none;
+    background-color: #f5f5f5;
+  }
+
+  em, strong { text-decoration: underline; }
+
+  mark { background-color: #fff983; }
+
+  abbr { cursor: help; }
+
+  a {
+    color: #41beff;
+
+    &:hover,
+    &:focus { text-decoration: underline; }
+    &:visited { color: darken(#41beff,26%); }
+  }
+
+  q { font-style: italic; }
+
+  cite { color: #a8a8a8; }
+
+  code, var, samp {
+    @include h-padding(6px);
+    font-style: normal;
+    background-color: #222;
+    color: #298ABD;
+  }
+}

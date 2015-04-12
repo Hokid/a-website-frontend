@@ -7,11 +7,20 @@
 .u-block { display: block !important; }
 .u-inline { display: inline !important; }
 .u-hide { display: none !important; }
-
+.u-v-top { vertical-align: top !important; }
+.u-v-bottom { vertical-align: bottom !important; }
+.u-v-middle { vertical-align: middle !important; }
 
 
 /// Leading-и(вертикальные отступы)
 
+.u-half-leading-xxs { @extend %u-half-leading-xxs; }
+.u-half-leading-xs  { @extend %u-half-leading-xs;  }
+.u-half-leading-s   { @extend %u-half-leading-s;   }
+.u-half-leading-m   { @extend %u-half-leading-m;   }
+.u-half-leading-l   { @extend %u-half-leading-l;   }
+.u-half-leading-xl  { @extend %u-half-leading-xl;  }
+.u-half-leading-xxl { @extend %u-half-leading-xxl; }
 .u-leading-xxs { @extend %u-leading-xxs; }
 .u-leading-xs  { @extend %u-leading-xs;  }
 .u-leading-s   { @extend %u-leading-s;   }
@@ -77,6 +86,5 @@
   display: inline-block;
   position: relative;
   line-height: 1;
-  vertical-align: text-bottom;
   white-space: nowrap;
 }

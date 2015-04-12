@@ -1,15 +1,12 @@
 $width-page: 1000px;
 $min-width-page: 320px;
-$h-padding: 20px;
-$height-header: 50px;
-$height-footer: (50px/16px)*1em;
-$width-main-col: 640px;
-$width-sidebar: 360px;
-$padding-top-content: 60px;
-$padding-content: 50px;
+$h-padding-page: 20px;
+$width-page-inner: ($width-page)-($h-padding-page);
+$height-header: $rhythm-one*2;
+$height-footer: $rhythm-one*5;
 
 $font-family-default: 'Arial',sans-serif;
 $font-family-roboto: 'roboto','Arial',sans-serif;
 
-$grid-gutter-size: 2%;
+$grid-gutter-size: percentage($rhythm-one/$width-page-inner);
 

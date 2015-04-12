@@ -1,33 +1,36 @@
 @at-root {
 
   /// Параметры
-  $width-user-board: 200px;
-  $font-size: 13px;
-  $padding-box: 10px;
-  $v-padding-title: 4px;
+  $font-size: $font-size-s;
 
 
 
   .widget {
+    @include adjust-font-size-to($font-size);
+    color: hsl(0,0%,50%);
 
     &__title {
-      padding: $v-padding-title 8px;
-      font-family: $font-family-default;
-      font-size: $font-size;
-      line-height: 1;
+      @include h-padding(6px);
       background-color: hsl(0,0%,97%);
       color: hsl(0,0%,68%);
       border-left: 4px solid;
     }
 
-    &__body,
-    &__box {
-      font-size: $font-size;
-      color: hsl(0,0%,50%);
+    &__body {
+      background-color: #fff;
     }
 
-    &__box { padding: $padding-box; }
+    &__box {
+      padding: $rhythm-one-half 4px;
+      background-color: #fff;
+    }
 
-    &__item {}
+    &__item {
+      @include margin-trailer(0.5);
+
+      &:last-child {
+        @include margin-trailer(0);
+      }
+    }
   }
 }

@@ -2,6 +2,9 @@
 
   /// Параметры
   $z-index: $z-index-dropdown-box;
+  $height-link: ($rhythm-one-quarter*5)-1px;
+  $line-height-link: $rhythm-one-quarter*3;
+  $font-size-link: $font-size-s;
 
 
 
@@ -17,7 +20,13 @@
 
     &--right { right: 0; }
 
-    &__item + &__item { border-top: 1px solid hsl(0,0%,93%); }
+    &__item {
+      border-top: 1px solid transparent;
+
+      & + & {
+        border-color: hsl(0,0%,93%);
+      }
+    }
 
     &__actions {
       @include h-padding(4px);
@@ -27,8 +36,11 @@
 
     &__link {
       display: block;
+      padding: $rhythm-border-one-quarter 6px $rhythm-one-quarter;
+      height: $height-link;
+      font-size: $font-size-link;
+      line-height: $line-height-link;
       color: hsl(0,0%,50%);
-      padding: 10px 6px;
 
       &:hover,
       &:focus {

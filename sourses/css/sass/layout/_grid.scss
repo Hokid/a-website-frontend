@@ -19,33 +19,43 @@
   /// Ряд
   .grid-row { @extend %u-clearfix; }
 
-  /// Базовый класс для колонки без отступов
-  .grid {
+
+  /// Класс для колонки без отступов
+  %grid {
     position: relative;
     float: left;
     @if $grid-box-sizing { box-sizing: border-box; }
   }
 
-  /// Если заданы отступы, то генерируется дополнительный базовый класс
-  @if $grid-gutter-size > 0 {
-    .grid-offset {
-      @extend .grid;
-      margin-left: $grid-gutter-size;
-      &:first-child { margin-left: 0; }
-    }
-  }
-
-
-  /// Генерация колонок
+  /// Генерация колонок без отступов
   @for $i from 1 to $grid-columns {
-
-    /// Без отступов
-    .grid--#{$i} { width: ( $i/$grid-columns*100% ); }
-
-    /// С отступами
-    @if $grid-gutter-size > 0 {
-      .grid-offset--#{$i} { width: ( $i/$grid-columns*100% - $grid-gutter-size ); }
+    .grid-#{$i} {
+      @extend %grid;
+      width: ( $i/$grid-columns*100% );
     }
   }
 
+
+  /// Если заданы отступы, то генерируется дополнительный класс
+  @if $grid-gutter-size > 0 {
+
+    /// Так как у последней колонки отступ обрезается(см.1), то этот обрезанный отступ
+    /// нужно разделить между всеми колонками.
+    $sharing-gutter-part: ($grid-gutter-size/$grid-columns);
+
+    %grid-offset {
+      position: relative;
+      float: left;
+      margin-right: $grid-gutter-size;
+      &:last-child { margin-right: 0; } /* 1 */
+    }
+
+    /// Генерация колонок с отступами
+    @for $i from 1 to $grid-columns {
+      .grid-offset-#{$i} {
+        @extend %grid-offset;
+        width: ( ($i/$grid-columns*100%)+($sharing-gutter-part*$i) - $grid-gutter-size );
+      }
+    }
+  }
 }

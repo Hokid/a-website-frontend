@@ -1,6 +1,8 @@
 @charset 'utf-8';
 /// Сторонний код
 @import 'vendors/index';
+@import 'utils/variables/compass';
+@import 'compass/typography/vertical_rhythm';
 
 /// Переменныею, миксины, placeholders т.д.
 @import 'utils/index';
@@ -29,4 +31,8 @@
   'moduls/text',
   'moduls/widget',
   'moduls/pagination',
-  'moduls/footer';
+  'moduls/footer',
+  'moduls/select';
+
+/// Временные файлы
+@import 'tmp/index';

@@ -1,14 +1,12 @@
 @at-root {
 
   /// Параметры
-  $height: $height-header;
   $width-dropdown-box: 260px;
 
 
 
   .nav {
     position: relative;
-    line-height: normal;
 
     &__box {
 
@@ -19,7 +17,7 @@
           @include v-padding(4px);
           display: none;
           position: absolute;
-          top: $height;
+          top: $height-header;
           margin-top: 14px;
           width: $width-dropdown-box;
           z-index: $z-index-dropdown-box;
@@ -33,7 +31,7 @@
     }
 
     &__dropdown-box.dropdown-box {
-      top: $height;
+      top: $height-header;
       margin-top: 14px;
       width: $width-dropdown-box;
     }
@@ -47,8 +45,9 @@
       &--respons {
         @include media-mx-w($screen-l) {
           display: block;
+          border-top: 1px solid transparent;
 
-          & + & { border-top: 1px solid hsl(0,0%,93%); }
+          & + & { border-color: hsl(0,0%,93%); }
         }
       }
     }
@@ -56,9 +55,8 @@
     &__link {
 
       /// Параметры
-      $font-size: 14px;
-      $v-padding: (($height)-$font-size)/2;
-      $h-padding: 10px;
+      $font-size: $font-size-s;
+      $h-padding: 12px;
 
       /// Цвета
       $color-txt: hsl(0,0%,99%);
@@ -66,16 +64,15 @@
 
 
 
+      @include adjust-font-size-to($font-size);
       display: block;
-      padding: $v-padding $h-padding;
-      height: $height;
-      font-size: $font-size;
-      line-height: 1;
+      height: $height-header;
+      padding: $rhythm-one-half;
       text-transform: uppercase;
       color: $color-txt;
 
       &:hover {
-        padding-top: ($v-padding)-2px;
+        padding-top: ($rhythm-one-half)-2px;
         background-color: $color-bg-hover;
         border-bottom: 2px solid hsl(0,0%,40%);
         box-shadow: 0px -1px 8px -2px hsl(0,0%,40%);
@@ -90,9 +87,13 @@
       &--respons {
         @include media-mx-w($screen-l) {
           color: hsl(0,0%,50%);
+          height: ($rhythm-one-half*3)-1px;
+          padding: $rhythm-border-one-quarter
+                   $rhythm-one-half
+                   $rhythm-one-quarter;
 
           &:hover {
-            padding-top: $v-padding;
+            padding-top: $rhythm-border-one-quarter;
             background-color: hsl(54, 100%, 93%);
             border: none;
             box-shadow: none;
@@ -104,7 +105,7 @@
     /// Временно
     &__toggle.btn {
       @extend %u-hide-after-l;
-      @include v-margin(10px);
+      @include v-margin(9px);
     }
   }
 
@@ -131,7 +132,7 @@
       position: absolute;
       left: 50%;
       margin-left: -10px;
-      top: ($height)-6px;
+      top: ($height-header)-6px;
       border: 10px solid transparent;
     }
 

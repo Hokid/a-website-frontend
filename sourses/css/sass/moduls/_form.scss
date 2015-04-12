@@ -1,12 +1,4 @@
-/**
-  * 1. Убирает внутренние тени сверху на iOS(и специальные стили)
-  */
-
 @at-root {
-
-  /// Параметры
-  $border-radius: 3px;
-  $padding: 14px;
 
   /// Цвета
   $color-border: hsl(0,0%,93%);
@@ -15,50 +7,61 @@
 
 
   .form {
-    padding: $padding;
+    padding: $rhythm-one-half;
     color: $color-txt;
 
     &__field,
     &__field.txt-field {
+      @include margin-trailer(0.5);
       display: block;
       width: 100%;
-      margin-bottom: 15px;
 
-      &:last-of-type { margin-bottom: 0; }
+      &:last-child {
+        @include margin-trailer(0);
+      }
     }
 
     &__field-caption,
     &__field-caption.label {
+      @include adjust-leading-to(1);
       display: block;
-      margin-left: 7px;
-      margin-bottom: 4px;
+      padding-left: $rhythm-one-quarter;
     }
 
     &__fieldset,
     &__fieldset.fieldset {
       width: 100%;
-      margin-top: 15px;
+
+      > .legend {
+        @include adjust-leading-to(1);
+        margin-bottom: -($rhythm-border-one-half);
+      }
     }
 
     &__option,
     &__option.option {
       display: block;
 
-      & + & { margin-top: 5px; }
+      /// Медиа-запросы
+      @include media-mx-w($screen-l) {
+        @include margin-trailer(0.5);
+
+        &:last-child {
+          @include margin-trailer(0);
+        }
+      }
     }
   }
 
   .label,
   .legend {
     font-size: 13px;
-    line-height: (16/13);
+    line-height: normal;
   }
 
   .fieldset {
     @include h-margin(0);
-    padding: 12px;
-    line-height: (24/16);
-    border: 1px solid $color-border;
+    @include rhythm-borders(1px, 0.5, $base-font-size, solid $color-border);
     border-radius: 5px;
   }
 }
@@ -81,9 +84,7 @@
 @at-root {
 
   /// Параметры
-  $font-size: 14px;
-  $respons-v-padding: 6px;
-  $respons-h-padding: 8px;
+  $font-size: $font-size-s;
 
   /// Цвета
   $color-bg: hsl(54, 100%, 93%);
@@ -92,11 +93,11 @@
 
 
   .option {
+    @include adjust-font-size-to($font-size);
     display: inline-block;
-    font-size: $font-size;
 
     &__checkbox,
-    &__checkbox.checkbox { margin-right: 4px; }
+    &__checkbox.checkbox { margin-right: $rhythm-one-quarter; }
 
     input[type="checkbox"]:checked + &__handler {
 
@@ -115,7 +116,9 @@
 
         .option__handler {
           display: block;
-          padding: $respons-v-padding $respons-h-padding;
+          height: $rhythm-one-half*3;
+          padding: 9px 8px; /* 9px = height/2 - line-height/2 - 1px(border) */
+          line-height: 16px; /* Размер checkbox-а */
           border: 1px solid $color-border;
           border-radius: 3px;
           background-color: lighten($color-bg,5%);
@@ -138,7 +141,7 @@
   /// Параметры
   $size: 16px;
   $font-size: 10px;
-  $padding: (($size - $font-size)-2px)/2;
+  $padding: ($size/2)-($font-size/2)-1px;
 
   /// Цвета
   $color-bg: hsl(54, 100%, 93%);
@@ -173,13 +176,17 @@
 
 
 
-/// Текстовые поля
+/**
+ * Текстовые поля
+ *
+ * 1. Убирает внутренние тени сверху на iOS(и специальные стили)
+ */
 
 @at-root {
 
   /// Параметры
-  $font-size: 14px;
-  $border-radius: 3px;
+  $font-size: $font-size-s;
+  $height: $rhythm-one-half*3;
   $shadow: 12px;
 
   /// Цвета
@@ -192,18 +199,19 @@
 
   .txt-field,
   .textarea {
-    padding: 8px;
-    font-size: $font-size;
+    @include adjust-font-size-to($font-size);
+    @include h-padding(6px);
     background-color: $color-bg;
-    line-height: 1;
     outline: 0;
     border: 1px solid $color-border;
-    border-radius: $border-radius;
     color: $color-txt;
     -webkit-appearance: none; /* 1 */
 
     &:hover,
-    &:active { background-color: lighten($color-bg,3%); }
+    &:active {
+      background-color: lighten($color-bg,3%);
+    }
+
     &:focus {
       color: darken($color-txt,70%);
       background-color: lighten($color-bg,4%);
@@ -212,7 +220,12 @@
   }
 
   .textarea {
-    border-radius: 0;
-    line-height: 1.3;
+    @include v-padding($rhythm-border-one-half);
+  }
+
+  .txt-field {
+    @include v-padding($rhythm-border-one-quarter);
+    height: $height;
+    border-radius: 3px;
   }
 }

@@ -1,10 +1,27 @@
 @at-root {
 
   .footer {
-    @include v-padding(10px);
+    @extend %u-clearfix;
+    font-size: 14px;
     font-family: monospace;
     color: hsl(0,0%,75%);
     text-align: center;
-    font-size: 14px;
+
+    &__left-side {
+      float: left;
+    }
+
+    &__right-side {
+      float: right;
+    }
+
+    &__left-side,
+    &__right-side {
+
+      /// Медиа-запросы
+      @include media-mx-w($screen-m) {
+        float: none;
+      }
+    }
   }
 }

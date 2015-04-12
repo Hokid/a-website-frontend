@@ -1,5 +1,6 @@
 .l-footer {
   @extend %u-footer;
+  @include padding-leader(2);
   min-width: $width-page;
 
   /// Медиа-запросы

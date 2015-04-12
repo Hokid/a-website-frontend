@@ -1,12 +1,10 @@
 html,
 body { @extend %u-view-height; }
 
-html {
-  font-size: 16px;
-  font-family: $font-family-default;
-}
+@include establish-baseline;
 
 body {
+  font-family: $font-family-default;
   background-color: $color-bg-page;
   color: $color-txt-page;
 }
@@ -20,15 +18,51 @@ ul {
 }
 
 hr {
+  @include v-margin($rhythm-border-one-half);
   border-left: none;
   border-right: none;
-  border-color: #e8e8e8;
+  border-width: 1px;
   border-style: solid;
-  margin: 20px 0;
+  border-color: #e8e8e8;
+
+  &.x2 {
+    @include v-margin($rhythm-border-one);
+  }
 }
 
 p { margin: 0; }
 
 h1,h2,h3,h4,h5,h6 { margin: 0; }
+
+h1 {
+  @include adjust-font-size-to(3.157em, 2);
+}
+
+h2 {
+  @include adjust-font-size-to(2.369em);
+}
+
+h3 {
+  @include adjust-font-size-to(1.777em);
+}
+
+h4 {
+  @include adjust-font-size-to(1.333em, 1);
+}
+
+/**
+ * 1. normal выставлен для того, чтобы не наследовать line-height,
+ *    который может иметь фикс. ширину(px, em и т.д). Так как у тега
+ *    small ширина шрифта отличная от размера шрифта родительского блока,
+ *    то наследовании line-height может привести к увеличению всей
+ *    строки, где находится тег small.
+ *    Кратко: меняется величина шрифта small, меняется величина leading-а small,
+ *    baseline тега small подстраивается под baseline всей строки, тем самым влияя
+ *    своими half-leading-и на высоту всей строки.
+ */
+
+small {
+  line-height: normal; /* 1 */
+}
 
 *,*:before,*:after { box-sizing: border-box; }

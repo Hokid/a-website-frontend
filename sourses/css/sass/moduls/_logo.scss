@@ -5,22 +5,15 @@
   $glyph-color: #000;
 
   .logo {
+    @include v-padding(4px);
+    height: $rhythm-one*2;
     display: inline-block;
-    vertical-align: text-bottom;
+    vertical-align: middle;
     color: $glyph-color;
 
     &__ico,
     &__ico.ico {
       font-size: $glyph-size;
-      line-height: $height;
-    }
-
-    /// Медиа-запросы
-    @include media-mx-w($screen-l) {
-      @include h-margin(auto);
-      @include h-pos(0);
-      position: absolute;
-      width: $glyph-size;
     }
   }
 }

@@ -6,12 +6,37 @@
    <thead>
     <tr class="item-box__row">
       <td class="item-box__cell item-box__cell--fill" colspan="2">
+
         <small>Выбрано: 2/10</small>
-        <div class="u-pull-right">
-          <a class="link" href="#"><small>Выбрать все</small></a><!--
-       --><small> | </small><a class="link" href="#"><small>Отменить выбор</small></a><!--
-       --><small> | </small><a class="link" href="#"><small>Удалить выбранные</small></a>
+
+        <div class="select u-v-top u-h-gutter-xxs">
+          <div class="btn-group">
+            <button class="btn btn--default btn--small" type="button">Выбрать все</button><!--
+         --><button class="btn btn--default btn--small js-dropdown-toggle" type="button">
+              <i class="ico ico--arrow-down btn__only-ico"></i>
+            </button>
+          </div>
+          <ul class="dropdown-box dropdown-box--right js-dropdown">
+            <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Сбросить выбор</a></li>
+          </ul>
         </div>
+
+          <div class="u-pull-right">
+
+            <small class="u-h-gutter-xxs">Показать</small>
+
+            <div class="select u-v-top u-h-gutter-xxs">
+              <div class="btn-group">
+                <button class="btn btn--default btn--small" type="button">Новые</button><!--
+             --><button class="btn btn--default btn--small js-dropdown-toggle" type="button">
+                  <i class="ico ico--arrow-down btn__only-ico"></i>
+                </button>
+              </div>
+              <ul class="dropdown-box dropdown-box--right js-dropdown">
+                <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Старые</a></li>
+              </ul>
+            </div>
+          </div>
       </td>
     </tr>
   </thead>

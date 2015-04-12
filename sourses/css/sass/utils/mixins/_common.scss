@@ -13,14 +13,17 @@
   height: $height;
 }
 
+@mixin rem-size( $width, $height:$width, $use-px-fallback:$rem-with-px-fallback ) {
+  @include rem('width', $width, $use-px-fallback);
+  @include rem('height', $height, $use-px-fallback);
+}
+
 @mixin board( $color-bg:null, $color-border:null, $color-txt:null ) {
   $color-border: hsl(238, 67%, 16%) !default;
   $color-bg: #f5f5f5 !default;
   $color-txt: $color-border !default;
 
   background-color: $color-bg;
-  margin: 15px 0;
-  padding: 15px;
   color: $color-txt;
   border-left: 5px solid $color-border;
 }

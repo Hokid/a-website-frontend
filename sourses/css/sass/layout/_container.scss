@@ -1,6 +1,6 @@
 .l-container {
   @include h-margin(auto);
-  @include h-padding($h-padding);
+  @include h-padding($h-padding-page);
   width: $width-page;
 
   /// Медиа-запросы

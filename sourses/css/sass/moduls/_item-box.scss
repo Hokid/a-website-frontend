@@ -23,24 +23,27 @@
  *    меньше(уменьшается справой стороны) - это расхождение очень раздражает,
  *    как в плане того, что оно есть, так в плане того, что оно только
  *    на webkit(на сколько я заметил). Не знаю в чем причина такой бабуйни.
+ *
+ *    Побочные эффекты:
+ *
+ *      * к .item-box лучше не применять вертикальные отступы
  */
 
 @at-root {
 
   .item-box {
+    @include adjust-font-size-to(14px);
     width: 100%;
-    font-family: $font-family-default;
-    font-size: 14px;
-    line-height: normal;
     // border-top: 1px solid hsl(0,0%,93%); /* 1 */
     border-left: 1px solid hsl(0,0%,93%); /* 1 */
     border-collapse: separate; /* 1 */
+    background-color: #fff;
 
 
-    &__row {}
+    //&__row {}
 
     &__cell {
-      padding: 8px;
+      padding: $rhythm-one-quarter 8px $rhythm-border-one-quarter;
       border-right: 1px solid hsl(0,0%,93%); /* 1 */
       border-bottom: 1px solid hsl(0,0%,93%); /* 1 */
       color: hsl(0,0%,30%);
@@ -55,10 +58,10 @@
 
     &__title {
       @include border-top-radius(3px);
-      padding: 6px 8px;
+      @include h-padding(8px);
       font-weight: bold;
       text-align: left;
-      line-height: 1;
+      line-height: $rhythm-border-one;
       border: 1px solid hsl(0,0%,93%);
       border-bottom: none;
       background-color: hsl(0,0%,97%);

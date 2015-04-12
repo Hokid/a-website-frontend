@@ -1,0 +1,32 @@
+
+/// Размеры шрифта
+
+$font-size-xs: ($base-font-size)-6px;
+$font-size-xs: ($base-font-size)-4px;
+$font-size-s: ($base-font-size)-2px;
+$font-size-m: $base-font-size;
+$font-size-l: ($base-font-size)+2px;
+$font-size-xl: ($base-font-size)+4px;
+$font-size-xxl: ($base-font-size)+6px;
+
+
+
+/// Некоторые величины, зависящие от значения переменной compass-а $base-line-height
+
+$rhythm-one-quarter: rhythm(0.25);
+$rhythm-one-half: rhythm(0.5);
+$rhythm-one: rhythm(1);
+
+/// минус $default-rhythm-border-width
+
+$rhythm-border-one-quarter: rhythm(0.25, $base-font-size, $default-rhythm-border-width);
+$rhythm-border-one-half: rhythm(0.5, $base-font-size, $default-rhythm-border-width);
+$rhythm-border-one: rhythm(1, $base-font-size, $default-rhythm-border-width);
+
+/// минус двойной $default-rhythm-border-width
+
+$rhythm-borders-one-quarter: rhythm(0.25, $base-font-size, $default-rhythm-border-width*2);
+$rhythm-borders-one-half: rhythm(0.5, $base-font-size, $default-rhythm-border-width*2);
+$rhythm-borders-one: rhythm(1, $base-font-size, $default-rhythm-border-width*2);
+
+

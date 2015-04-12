@@ -19,17 +19,19 @@ $height-footer: 70px !default;
 %u-view-height { height: 100%; }
 
 %u-push-footer-down {
+  @include output-rhythm('margin-bottom', -$height-footer);
   min-height: 100%;
-  margin-bottom: -$height-footer;
 
   &:after {
+    @include output-rhythm('height', $height-footer);
     content: "";
     display: block;
-    height: $height-footer;
   }
 }
 
-%u-footer { height: $height-footer; }
+%u-footer {
+  @include output-rhythm('height', $height-footer);
+}
 
 
 
@@ -46,22 +48,29 @@ $height-footer: 70px !default;
 
 /// Leading-и(вертикальные отступы)
 
-$u-leading-step: 5px !default;
+$u-leading-step: 3px !default;
 
-%u-leading-xxs { @include v-padding($u-leading-step   !important);   }
-%u-leading-xs  { @include v-padding($u-leading-step*2 !important); }
-%u-leading-s   { @include v-padding($u-leading-step*3 !important); }
-%u-leading-m   { @include v-padding($u-leading-step*4 !important); }
-%u-leading-l   { @include v-padding($u-leading-step*5 !important); }
-%u-leading-xl  { @include v-padding($u-leading-step*6 !important); }
-%u-leading-xxl { @include v-padding($u-leading-step*7 !important); }
+%u-half-leading-xxs { @include v-padding($u-leading-step   !important); }
+%u-half-leading-xs  { @include v-padding($u-leading-step*2 !important); }
+%u-half-leading-s   { @include v-padding($u-leading-step*3 !important); }
+%u-half-leading-m   { @include v-padding($u-leading-step*4 !important); }
+%u-half-leading-l   { @include v-padding($u-leading-step*5 !important); }
+%u-half-leading-xl  { @include v-padding($u-leading-step*6 !important); }
+%u-half-leading-xxl { @include v-padding($u-leading-step*7 !important); }
+%u-leading-xxs { @include v-padding($u-leading-step*2 !important); }
+%u-leading-xs  { @include v-padding($u-leading-step*4 !important); }
+%u-leading-s   { @include v-padding($u-leading-step*6 !important); }
+%u-leading-m   { @include v-padding($u-leading-step*8 !important); }
+%u-leading-l   { @include v-padding($u-leading-step*10 !important); }
+%u-leading-xl  { @include v-padding($u-leading-step*12 !important); }
+%u-leading-xxl { @include v-padding($u-leading-step*14 !important); }
 
 
 
 /// расстояние между элементами
 
-$u-h-gutter-step: 5px !default;
-$u-v-gutter-step: 5px !default;
+$u-h-gutter-step: 6px !default;
+$u-v-gutter-step: 6px !default;
 
 %u-h-gutter-xxs { margin-left: $u-h-gutter-step   !important; &:first-child { margin-left: 0 !important; } }
 %u-h-gutter-xs  { margin-left: $u-h-gutter-step*2 !important; &:first-child { margin-left: 0 !important; } }

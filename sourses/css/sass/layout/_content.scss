@@ -1,7 +1,5 @@
 .l-content {
   min-width: $width-page;
-  padding-top: $padding-top-content;
-  padding-bottom: $padding-content;
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {
@@ -10,26 +8,28 @@
 }
 
 .l-main-col {
-  max-width: percentage($width-main-col/$width-page);
-  float: left;
+  //max-width: percentage($width-main-col/$width-page);
+  //float: left;
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {
-    float: none;
-    max-width: none;
+    float: none !important;
+    width: 100% !important;
   }
 }
 
 .l-sidebar {
-  @include h-padding(percentage($padding-content/$width-page));
-  max-width: percentage($width-sidebar/$width-page);
-  float: right;
+  //@include h-padding(percentage($padding-content/$width-page));
+  //max-width: percentage($width-sidebar/$width-page);
+  //float: right;
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {
-    @include h-padding(0);
-    float: none;
-    max-width: none;
-    &:not(:first-child) { margin-top: 50px; }
+    float: none !important;
+    width: 100% !important;
+
+    &:not(:first-child) {
+      @include margin-leader(2);
+    }
   }
 }
