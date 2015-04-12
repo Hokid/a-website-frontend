@@ -67,7 +67,7 @@ var opts = {
 
       open: false,
 
-      files: path.build.root + "**/*",
+      //files: path.build.root + "**/*",
 
       notify: false,
 
@@ -99,26 +99,39 @@ var opts = {
 //
 //===============================================
 
+
+
 /**
- * Слежка за изменением файлов и запуск задач после изменения.
+ * Запуск процесса разработки:
  *
- * До запуска слежки выполняется:
- *   1. Сборка проэкта
+ *   1. Полная сборка проэкта
  *   2. Запуск лок. сервера
+ *   3. Запуск слежки изменения файлов
+ */
+
+gulp.task('dev', [ "build", "server", "watch" ]);
+
+
+
+/**
+ * Слежка за изменением файлов и запуск задач после изменения:
  *
- * Во время слежки выполняется:
  *   1. Сборка SASS
  *   2. Сборка HTML
  *   3. Сборка изображений
  *   4. Сборка иконочных шрифтов
+ *   5. Обновление браузера, если browser-sync запущен
  */
 
-gulp.task('watch', [ "build", "server" ], function(){
+gulp.task('watch', function(){
 
     gulp.watch( path.src.sass + "**/*.scss", ["compass"] );
     gulp.watch( path.src.html + "**/*.html", ["html"] );
     gulp.watch( path.src.img + "**/*", ["img"] );
     gulp.watch( path.src.glyphicons + "**/*", ["glyphicons"] );
+    gulp.watch( path.build.root + "**/*", function(){
+      if(browserSync.active) browserSync.reload();
+    });
 });
 
 
