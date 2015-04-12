@@ -32,8 +32,14 @@
 
   Array.prototype.forEach.call(dropdownToggles,function(toggle){
     toggle.addEventListener("click",function(e){
+      var parent = this.parentElement;
+      var dropdownBox, limit = 5;
       e.preventDefault();
-      displayToggle(this.parentElement.querySelector(".js-dropdown"));
+      while(!dropdownBox && --limit) {
+        parent = parent.parentElement;
+        dropdownBox = parent.querySelector(".js-dropdown");
+      }
+      displayToggle(dropdownBox);
     });
   });
 
