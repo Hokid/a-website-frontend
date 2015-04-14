@@ -1,7 +1,12 @@
 @at-root {
 
   .pagination {
+    @include margin-leader(2);
     text-align: center;
+
+    &:first-child {
+      @include margin-leader(2);
+    }
 
     .btn { width: $rhythm-one-half*3; }
   }

@@ -7,27 +7,21 @@
   }
 }
 
-.l-main-col {
-  //max-width: percentage($width-main-col/$width-page);
-  //float: left;
+.l-main-col,
+.l-sidebar {
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {
+    @include h-margin(0 !important);
     float: none !important;
     width: 100% !important;
   }
 }
 
 .l-sidebar {
-  //@include h-padding(percentage($padding-content/$width-page));
-  //max-width: percentage($width-sidebar/$width-page);
-  //float: right;
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {
-    float: none !important;
-    width: 100% !important;
-
     &:not(:first-child) {
       @include margin-leader(2);
     }

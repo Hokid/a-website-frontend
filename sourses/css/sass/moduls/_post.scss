@@ -9,12 +9,12 @@
 
 
   .post {
-    @include margin-trailer(2);
+    @include margin-leader(2);
     font-family: $font-family;
     color: $color-txt;
 
-    &:last-child {
-      @include margin-trailer(0);
+    &:first-child {
+      @include margin-leader(0);
     }
 
     &--narrow {

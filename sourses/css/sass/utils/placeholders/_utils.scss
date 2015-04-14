@@ -19,18 +19,18 @@ $height-footer: 70px !default;
 %u-view-height { height: 100%; }
 
 %u-push-footer-down {
-  @include output-rhythm('margin-bottom', -$height-footer);
+  margin-bottom: -$height-footer;
   min-height: 100%;
 
   &:after {
-    @include output-rhythm('height', $height-footer);
+    height: $height-footer;
     content: "";
     display: block;
   }
 }
 
 %u-footer {
-  @include output-rhythm('height', $height-footer);
+  height: $height-footer;
 }
 
 

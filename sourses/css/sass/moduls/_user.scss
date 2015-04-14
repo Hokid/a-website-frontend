@@ -30,17 +30,12 @@
   .user-board {
     width: $width-user-board;
     float: left;
-    line-height: normal;
 
     /// Медиа-запросы
     @include media-mx-w($screen-m) {
       @include margin-trailer(2);
       width: auto;
       float: none;
-
-      &:last-child {
-        @include margin-trailer(0);
-      }
     }
   }
 

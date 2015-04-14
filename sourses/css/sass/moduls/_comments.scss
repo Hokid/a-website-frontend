@@ -15,11 +15,12 @@
 
     &__title,
     &__add,
-    & > &__box > &__item {
-      @include margin-trailer(1);
+    & > &__box > &__item,
+    &__title + &__box {
+      @include margin-leader(1);
 
-      &:last-child {
-        @include margin-trailer(0);
+      &:first-child {
+        @include margin-leader(0);
       }
     }
 
@@ -55,7 +56,6 @@
 
       img {
         @include size(100%);
-        vertical-align: middle;
       }
 
       /// Медиа-запросы
@@ -74,15 +74,14 @@
     }
 
     &__owner {
-      display: inline;
       margin-right: $rhythm-one-quarter;
       font-weight: bold;
+      line-height: normal;
     }
 
     &__meta {
       @include h-padding(6px);
-      display: inline;
-      font-size: 14px;
+      font-size: $font-size-s;
       line-height: normal;
       background-color: #F0F0F0;
       border-radius: 3px;

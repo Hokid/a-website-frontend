@@ -39,15 +39,15 @@
   /// Если заданы отступы, то генерируется дополнительный класс
   @if $grid-gutter-size > 0 {
 
-    /// Так как у последней колонки отступ обрезается(см.1), то этот обрезанный отступ
+    /// Так как у первой колонки отступ обрезается(см.1), то этот обрезанный отступ
     /// нужно разделить между всеми колонками.
     $sharing-gutter-part: ($grid-gutter-size/$grid-columns);
 
     %grid-offset {
       position: relative;
       float: left;
-      margin-right: $grid-gutter-size;
-      &:last-child { margin-right: 0; } /* 1 */
+      margin-left: $grid-gutter-size;
+      &:first-child { margin-left: 0; } /* 1 */
     }
 
     /// Генерация колонок с отступами

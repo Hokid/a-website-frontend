@@ -2,7 +2,7 @@
 
   .footer {
     @extend %u-clearfix;
-    font-size: 14px;
+    font-size: $font-size-s;
     font-family: monospace;
     color: hsl(0,0%,75%);
     text-align: center;
