@@ -22,8 +22,10 @@
 
   /// Медиа-запросы
   @include media-mx-w($screen-l) {
-    &:not(:first-child) {
-      @include margin-leader(2);
+    @include margin-leader(2);
+
+    &:first-child {
+      @include margin-leader(0);
     }
   }
 }

@@ -4,6 +4,10 @@
 
   #{headings()} {
     @include margin-leader(1);
+
+    &:first-child {
+      @include margin-leader(0);
+    }
   }
 
   #{nest('h1,h2,h3,h4,h5,h6','+h1,+h2,+h3,+h4,+h5,+h6')} {
@@ -18,6 +22,7 @@
   ul,
   ol,
   dl,
+  dt,
   dd,
   div,
   pre,
@@ -30,6 +35,10 @@
     }
   }
 
+  dt + dd {
+    @include margin-leader(0);
+  }
+
   ul,
   ol {
     padding-left: $rhythm-one;
@@ -37,6 +46,10 @@
 
   ul {
     list-style: disc;
+  }
+
+  dl {
+    margin-bottom: 0;
   }
 
   dt {
@@ -49,9 +62,9 @@
   }
 
   pre {
-    @include margin-leader(0);
     @include board(#222,#FF2042,#298ABD);
     padding: $rhythm-one-half;
+    margin-bottom: 0;
 
     code, samp {
       background: transparent;
@@ -60,9 +73,9 @@
   }
 
   blockquote {
-    @include margin-leader(0);
     @include h-margin(0);
     @include board();
+    margin-bottom: 0;
     padding: $rhythm-one-half;
   }
 
