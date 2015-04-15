@@ -69,5 +69,39 @@
     }
 
     &__item {}
+
+    &__left-bar {
+      float: left;
+    }
+
+    &__right-bar {
+      float: right;
+    }
+
+    &__left-bar,
+    &__right-bar {
+      @include media-mx-w($screen-s) {
+        float: none;
+      }
+    }
+
+    &__label,
+    &__select.select {
+      margin-left: $rhythm-one-quarter;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      @include media-mx-w($screen-s) {
+        margin-left: 0;
+      }
+    }
+
+    &__label {
+      @include media-mx-w($screen-s) {
+        display: block;
+      }
+    }
   }
 }

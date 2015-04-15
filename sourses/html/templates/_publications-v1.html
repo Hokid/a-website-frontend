@@ -7,27 +7,29 @@
     <tr class="item-box__row">
       <td class="item-box__cell item-box__cell--fill" colspan="2">
 
-        <small>Выбрано: 2/10</small>
+        <div class="item-box__left-bar">
+          <small class="iten-box__label">Выбрано: 2/10</small>
 
-        <div class="select u-v-top u-h-gutter-xxs">
-          <div class="btn-group">
-            <button class="btn btn--default btn--small" type="button">Выбрать все</button><!--
-         --><button class="btn btn--default btn--small js-dropdown-toggle" type="button">
-              <i class="ico ico--arrow-down btn__only-ico"></i>
-            </button>
+          <div class="select select--respons item-box__select">
+            <div class="btn-group">
+              <span class="btn btn--default btn--small">Выбрать все</span><!--
+           --><button class="btn btn--default btn--small js-dropdown-toggle" type="button">
+                <i class="ico ico--arrow-down btn__only-ico"></i>
+              </button>
+            </div>
+            <ul class="dropdown-box dropdown-box--right js-dropdown">
+              <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Сбросить выбор</a></li>
+            </ul>
           </div>
-          <ul class="dropdown-box dropdown-box--right js-dropdown">
-            <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Сбросить выбор</a></li>
-          </ul>
         </div>
 
-          <div class="u-pull-right">
+          <div class="item-box__right-bar">
 
-            <small class="u-h-gutter-xxs">Показать</small>
+            <small class="iten-box__label">Показать</small>
 
-            <div class="select u-v-top u-h-gutter-xxs">
+            <div class="select select--respons item-box__select">
               <div class="btn-group">
-                <button class="btn btn--default btn--small" type="button">Новые</button><!--
+                <span class="btn btn--default btn--small">Новые</span><!--
              --><button class="btn btn--default btn--small js-dropdown-toggle" type="button">
                   <i class="ico ico--arrow-down btn__only-ico"></i>
                 </button>

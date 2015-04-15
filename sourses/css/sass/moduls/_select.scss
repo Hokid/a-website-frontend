@@ -7,4 +7,27 @@
     line-height: 0;
     white-space: nowrap;
   }
+
+  .select--respons {
+    @include media-mx-w($screen-s) {
+      display: block;
+
+      > .btn-group {
+        @include clearfix;
+        display: block;
+      }
+
+      > .btn-group > .btn:first-child {
+        width: 85%;
+      }
+
+      > .btn-group > .btn:first-child + .btn  {
+        width: 15%;
+      }
+
+      > .dropdown-box {
+        width: 100%;
+      }
+    }
+  }
 }
