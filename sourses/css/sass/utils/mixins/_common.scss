@@ -76,3 +76,13 @@
 @mixin media-mx-w( $val ) {
   @media screen and (max-width: $val) { @content; }
 }
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after { clear: both; }
+}
