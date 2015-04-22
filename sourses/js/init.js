@@ -1,0 +1,4 @@
+window.aWebsite = {
+  modules: {},
+  observer: {}
+};
