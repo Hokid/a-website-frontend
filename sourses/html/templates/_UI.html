@@ -1,3 +1,17 @@
+<style>
+  .tree, .tree ul {
+    padding-left: 20px;
+  }
+
+  .tree {
+    padding: 12px;
+    font-family: monospace;
+    background-color: #222;
+    color: #298ABD;
+    border-left: 5px solid #FF2042;
+  }
+</style>
+
 <h4 class="u-v-gutter-m">Имитация элемента select(раскрывающегося списка)</h4>
 
 <div class="u-v-gutter-m">
@@ -30,7 +44,155 @@
   </div>
 </div>
 
+<h4 class="u-v-gutter-m">Выпадающее окошко</h4>
 
+<ul class="tree u-v-gutter-xxl">
+  <li>.js-toggle-dropdown</li>
+  <li>.js-dropdown</li>
+</ul>
+
+<hr>
+
+<div>
+  <div class="u-relative u-inline-block">
+    <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+    <ul class="dropdown-box js-dropdown">
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<ul class="tree u-v-gutter-xxl">
+  <li>.js-toggle-dropdown</li>
+  <li>div</li>
+  <li>.js-dropdown</li>
+</ul>
+
+<hr>
+
+<div>
+  <div class="u-relative u-inline-block">
+    <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+    <div></div>
+    <ul class="dropdown-box js-dropdown">
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<ul class="tree u-v-gutter-xxl">
+  <li>.js-toggle-dropdown</li>
+  <li>
+    div
+    <ul>
+      <li>.js-dropdown</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<div>
+  <div class="u-relative u-inline-block">
+    <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+    <div>
+      <ul class="dropdown-box js-dropdown">
+        <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+        <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+        <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<ul class="tree u-v-gutter-xxl">
+  <li>
+  div
+  <ul>
+    <li>.js-toggle-dropdown</li>
+  </ul>
+  </li>
+  <li>.js-dropdown</li>
+</ul>
+
+<hr>
+
+<div>
+  <div class="u-relative u-inline-block">
+    <div>
+      <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+    </div>
+    <ul class="dropdown-box js-dropdown">
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+      <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<ul class="tree u-v-gutter-xxl">
+  <li>.js-toggle-dropdown</li>
+  <li>.js-dropdown</li>
+  <li>
+    <ul>
+      <li>.js-toggle-dropdown</li>
+      <li>.js-dropdown</li>
+      <li>
+        <ul>
+          <li>.js-toggle-dropdown</li>
+          <li>.js-dropdown</li>
+        </ul>
+      </li>
+      <li>.js-toggle-dropdown</li>
+      <li>.js-dropdown</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<div>
+  <div class="u-relative u-inline-block">
+    <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+    <div class="dropdown-box js-dropdown">
+      <div class="u-relative u-inline-block u-h-gutter-xs">
+        <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+        <div class="dropdown-box js-dropdown">
+          <div class="u-relative u-inline-block u-h-gutter-xs">
+            <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+            <ul class="dropdown-box js-dropdown">
+              <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+              <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+              <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="u-relative u-inline-block u-h-gutter-xs">
+        <button class="btn btn--default js-dropdown-toggle">Кнопка</button>
+        <ul class="dropdown-box js-dropdown">
+          <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+          <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+          <li class="dropdown-box__item"><a href="#" class="dropdown-box__link">Item</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
 
 <h4 class="u-v-gutter-m">Кнопка</h4>
 
