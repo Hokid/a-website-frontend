@@ -20,6 +20,11 @@
 
     &--right { right: 0; }
 
+    &.is-opened {
+      display: block;
+      z-index: ($z-index)+1;
+    }
+
     &__item {
       border-top: 1px solid transparent;
 
