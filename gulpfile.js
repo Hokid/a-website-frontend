@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     htmlmin = require("gulp-htmlmin"),
     rubySass = require("gulp-ruby-sass"),
     compass = require("gulp-compass"),
-    htmlTagInclude = require("gulp-html-tag-include");
+    htmlTagInclude = require("gulp-html-tag-include"),
+    include = require("gulp-include");
 
 
 
@@ -22,14 +23,18 @@ var path = {
       sass: "sourses/css/sass/",
       html: "sourses/html/",
       img: "sourses/img/",
-      glyphicons: "sourses/glyph-icons/"
+      glyphicons: "sourses/glyph-icons/",
+      js: "sourses/js/",
+      jsVendors: "sourses/js/vendors/"
     },
 
     build: {
       root: "build/",
       css: "build/css/",
       img: "build/img/",
-      glyphicons: "build/glyph-icons/"
+      glyphicons: "build/glyph-icons/",
+      js: "build/js/",
+      jsVendors: "build/js/vendors/"
     }
 };
 
@@ -127,6 +132,7 @@ gulp.task('watch', function(){
 
     gulp.watch( path.src.sass + "**/*.scss", ["compass"] );
     gulp.watch( path.src.html + "**/*.html", ["html"] );
+    gulp.watch( path.src.js + "**/*.js", ["js"] );
     gulp.watch( path.src.img + "**/*", ["img"] );
     gulp.watch( path.src.glyphicons + "**/*", ["glyphicons"] );
     gulp.watch( path.build.root + "**/*", function(){
@@ -138,7 +144,7 @@ gulp.task('watch', function(){
 
 // Полная сборка проэкта
 
-gulp.task('build', [ "compass", "html", "img", "glyphicons" ], function(){});
+gulp.task('build', [ "compass", "html", ,"js" "img", "glyphicons" ], function(){});
 
 
 
@@ -166,6 +172,21 @@ gulp.task('ruby-sass', function(){
 
 });
 
+
+
+// Сборка JS
+
+gulp.task("js", function(){
+
+  del( [path.build.js + "script.js", path.build.jsVendors + "*.js"], function( err, deletedFiles ){});
+
+  gulp.src(path.src.js + "script.js")
+    .pipe(include())
+    .pipe(gulp.dest(path.build.js));
+
+  gulp.src(path.src.jsVendors + "*.js")
+    .pipe(gulp.dest(path.build.jsVendors));
+});
 
 
 /**

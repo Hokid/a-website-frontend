@@ -10,6 +10,7 @@
     "gulp-csso": "^0.2.9",
     "gulp-html-tag-include": "^1.0.1",
     "gulp-htmlmin": "^1.1.1",
+    "gulp-include": "^1.1.1",
     "gulp-ruby-sass": "^1.0.0-alpha.3"
   }
 }
