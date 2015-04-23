@@ -144,7 +144,7 @@ gulp.task('watch', function(){
 
 // Полная сборка проэкта
 
-gulp.task('build', [ "compass", "html", ,"js" "img", "glyphicons" ], function(){});
+gulp.task('build', [ "compass", "html", "js", "img", "glyphicons" ], function(){});
 
 
 
