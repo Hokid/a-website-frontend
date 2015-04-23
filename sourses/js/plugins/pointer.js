@@ -1,7 +1,7 @@
 ;(function($){
 
   function isInHeader(toggle) {
-    return $(toggle).parents(".header,.l-header").length;
+    return Boolean($(toggle).parents(".header,.l-header").length);
   }
 
   function navEventHandler(e, data) {
