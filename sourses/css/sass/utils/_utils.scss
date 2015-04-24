@@ -66,25 +66,3 @@
 .u-hide-before-m  { @extend %u-hide-before-m;  }
 .u-hide-before-l  { @extend %u-hide-before-l;  }
 .u-hide-before-xl { @extend %u-hide-before-xl; }
-
-
-/**
- * Горизонтальный список, который постепено становится
- * dropdown списком при уменьшении ширины радителя.
- *
- * Структура HTML:
- *
- *   .u-respons-h-list.js-respons-h-list
- *     [list]
- *     [toggle].js-dropdown-toggle
- *     [dropdown].js-dropdown
- *
- * [Описание работы скрипта(возможно)]
- */
-
-.u-respons-h-list {
-  display: inline-block;
-  position: relative;
-  line-height: 1;
-  white-space: nowrap;
-}

@@ -1,0 +1,12 @@
+@at-root {
+
+  .hor-nav {
+    line-height: 1;
+    white-space: nowrap;
+
+    &__toggle {
+      margin-left: $rhythm-one-quarter;
+      display: none;
+    }
+  }
+}
