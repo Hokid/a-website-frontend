@@ -38,7 +38,10 @@
 
   var root = document,
       rootBody = root.body,
-      rootHTML = root.documentElement;
+      rootHTML = root.documentElement,
+      dropdownSelector = '.js-dropdown';
+      toggleSelector = '.js-dropdown-toggle';
+      closeBtnSelector = '.js-dropdown-close';
 
 
 
@@ -56,7 +59,7 @@
    */
 
   function isDropdown(anytype) {
-    return isElement(anytype) && $(anytype).is('.js-dropdown');
+    return isElement(anytype) && $(anytype).is(dropdownSelector);
   }
 
   /**
@@ -67,7 +70,7 @@
    */
 
   function isToggle(anytype) {
-    return isElement(anytype) && $(anytype).is('.js-dropdown-toggle');
+    return isElement(anytype) && $(anytype).is(toggleSelector);
   }
 
   /**
@@ -78,7 +81,7 @@
    */
 
   function isCloseBtn(anytype) {
-    return isElement(anytype) && $(anytype).is('.js-dropdown-close');
+    return isElement(anytype) && $(anytype).is(closeBtnSelector);
   }
 
   /**
@@ -157,6 +160,26 @@
    * --------------------------------
    */
 
+
+   /**
+    * Возвращает строку содержащую тип элемента, либо undefined, если
+    * параметр element не известен.
+    *
+    * @param  {element} element
+    * @return {string, undefined}
+    */
+
+   function typeOf(element) {
+    var type;
+
+    isToggle(element) && (type = 'toggle');
+    isCloseBtn(element) && (type = 'closeBtn');
+    isDropdown(element) && (type = 'dropdown');
+    isRoot(element) && (type = 'root');
+
+    return type;
+   }
+
   /**
    * Находит для toggle ближайший dropdown.
    *
@@ -218,10 +241,10 @@
    */
 
   function getContext(node) {
-    var context = root,
+    var context,
         data;
 
-    if(!isElement(node)) {
+    if(!isNode(node)) {
       return undefined;
     }
 
@@ -231,16 +254,9 @@
       return data.context || context;
     }
 
-    while(!isRoot(node)) {
-      node = node.parentElement;
+    context = $(node).parent().closest(dropdownSelector);
 
-      if(isDropdown(node)) {
-        context = node;
-        break;
-      }
-    }
-
-    return context;
+    return context.length ? context[0] : root;
   }
 
   /**
@@ -441,38 +457,17 @@
    */
 
   function getClosestTarget(element) {
-    var type = "root";
+    var target,
+        queue = [toggleSelector, closeBtnSelector, dropdownSelector, 'body'];
 
     if(!isElement(element)) {
       throw new TypeError("element должен быть element");
     }
 
-    while(true) {
+    target = $(element).closest(queue.join(','));
+    target = target.length && target[0] !== rootBody ? target[0] : root;
 
-      if(isToggle(element)) {
-        type = "toggle";
-        break;
-      }
-
-      if(isCloseBtn(element)) {
-        type = "closeBtn";
-        break;
-      }
-
-      if(isDropdown(element)) {
-        type = "dropdown";
-        break;
-      }
-
-      if(isRoot(element)) {
-        element = root;
-        break;
-      }
-
-      element = element.parentElement;
-    }
-
-    return {node: element, type: type};
+    return {node: target, type: typeOf(target)};
   }
 
 
