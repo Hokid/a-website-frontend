@@ -79,16 +79,21 @@
             toggleOuterWidth,
             currentWidth;
 
-        if($box.length === 1 & $toggle.length === 1) {
+        if($box.length === 1 && $toggle.length === 1) {
+            maxWidth = $horNav.width();
+            boxOuterWidth = getWidthWithMargin($box);
+            isToggleHidden = $toggle.css('display') === 'none';
+
+            if(isToggleHidden && (boxOuterWidth < maxWidth)){
+              return;
+            }
+
+            toggleOuterWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
+            currentWidth = boxOuterWidth + toggleOuterWidth;
             $boxChildren = $box.children();
             $currentChild = $boxChildren.filter('.is-last');
             !$currentChild.length && ($currentChild = $boxChildren.last());
             $itemsArray = $();
-            maxWidth = $horNav.width();
-            boxOuterWidth = getWidthWithMargin($box);
-            isToggleHidden = $toggle.css('display') === 'none';
-            toggleOuterWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
-            currentWidth = boxOuterWidth + toggleOuterWidth;
 
             if(currentWidth > maxWidth) {
 
@@ -100,15 +105,11 @@
                 $currentChild = $currentChild.prev();
               } while(currentWidth > maxWidth && $currentChild.length);
 
-              if($itemsArray.length) {
-                hideItems($itemsArray);
-                isToggleHidden && $toggle.show();
-              }
+              hideItems($itemsArray);
+              isToggleHidden && $toggle.show();
             }
 
-            else {
-
-              if(!$currentChild.is('.is-last')) return;
+            else if(currentWidth < maxWidth && !isToggleHidden) {
 
               while(!isLast) {
 
