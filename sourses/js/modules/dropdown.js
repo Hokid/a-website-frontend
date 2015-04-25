@@ -473,6 +473,41 @@
 
 
   /**
+   * --------------------------------
+   *     API для работы с HTML
+   * --------------------------------
+   */
+
+
+  /**
+   * Создаст элемент списка(li>a) и положит внутрь content(при наличии).
+   *
+   * @param  {anytype} content
+   * @param  {string} href (значение по умолчанию '#')
+   * @return {jObject}
+   */
+
+  function createItem(content, href) {
+    var href = typeof href === 'string' ? href : '#',
+        $item = $('<li class="dropdown-box__item" />'),
+        $link = $('<a href='+href+' class="dropdown-box__link" />');
+
+    !(content instanceof $) && (content = $(content));
+    content.length && $link.append(content);
+
+    return $item.append($link)[0];
+  }
+
+
+
+  /**
+   * --------------------------------
+   *           Инициализация
+   * --------------------------------
+   */
+
+
+  /**
    * Функция передается в качестве handler-а события click на document-е(root)
    * Описание:
    *
@@ -560,7 +595,11 @@
   // Экспорт API
 
   API.modules.dropdown = {
-    closeAll: function() { fireCallbacks(root); }
+    closeAll: function() { fireCallbacks(root); },
+    createItem: createItem,
+    getDropdownFor: getDropdownFor,
+    isOpened: isOpened,
+    closeAndClearData: closeAndClearData
   }
 
 })(window.aWebsite, jQuery);
