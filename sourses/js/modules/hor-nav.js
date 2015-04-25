@@ -5,7 +5,8 @@
   // * добавление скрытых элементов в dropdown
   // * оптимизация
 
-  var timerId;
+  var timerId,
+      dropdown = API.modules.dropdown;
 
 
   function getWidthWithMargin($element) {
@@ -37,6 +38,8 @@
       if($prevItem.length) {
         $prevItem.addClass('is-last');
       }
+
+      return items;
     }
   }
 
@@ -58,6 +61,93 @@
       if($lastItem.next().length) {
         $lastItem.addClass('is-last');
       }
+
+      return items;
+    }
+  }
+
+  function run(element) {
+    var $horNav = $(element),
+        $box = $horNav.find('> .js-hor-nav-box'),
+        $toggle = $box.next().find('> .js-dropdown-toggle'),
+        $dropdown,
+        $boxChildren,
+        $currentChild,
+        $itemsArray,
+        isLast = false,
+        maxWidth,
+        boxOuterWidth,
+        isToggleHidden,
+        toggleOuterWidth,
+        currentWidth;
+
+    if($box.length === 1 && $toggle.length === 1) {
+      maxWidth = $horNav.width();
+      boxOuterWidth = getWidthWithMargin($box);
+      isToggleHidden = $toggle.css('display') === 'none';
+
+      if(isToggleHidden && (boxOuterWidth < maxWidth)){
+        return;
+      }
+
+      toggleOuterWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
+      currentWidth = boxOuterWidth + toggleOuterWidth;
+      $boxChildren = $box.children();
+      $currentChild = $boxChildren.filter('.is-last');
+      !$currentChild.length && ($currentChild = $boxChildren.last());
+      $itemsArray = $();
+      $dropdown = $(dropdown.getDropdownFor($toggle[0]));
+
+      if(currentWidth > maxWidth) {
+
+        isToggleHidden && (currentWidth += getWidthWithMargin($toggle));
+
+        do {
+          currentWidth -= getWidthWithMargin($currentChild);
+          $itemsArray = $itemsArray.add($currentChild);
+          $currentChild = $currentChild.prev();
+        } while(currentWidth > maxWidth && $currentChild.length);
+
+
+        hideItems($itemsArray);
+        $itemsArray = $itemsArray.map(function(index, element) {
+          return dropdown.createItem($(element).contents().clone()); /* !!! */
+        });
+        $dropdown.prepend($itemsArray);
+
+        isToggleHidden && $toggle.show();
+      }
+
+      else if(currentWidth < maxWidth && !isToggleHidden) {
+
+        while(!isLast) {
+
+          $currentChild = $currentChild.next();
+          currentWidth += getWidthWithMargin($currentChild);
+
+          if($currentChild.is(':last-child')) {
+
+            if(currentWidth - toggleOuterWidth < maxWidth) {
+              isLast = true;
+            }
+
+            else {
+              break;
+            }
+          }
+
+          if(isLast || currentWidth < maxWidth) {
+            $itemsArray = $itemsArray.add($currentChild);
+          }
+        }
+
+        if(isLast) {
+          dropdown.closeAndClearData($dropdown[0]);
+          $toggle.hide();
+        }
+        for(var i = 0, l = $itemsArray.length; i++ < l; $dropdown.find('> :first').remove());
+        showItems($itemsArray);
+      }
     }
   }
 
@@ -66,76 +156,7 @@
 
     if($horNavs.length) {
       $horNavs.each(function(index, element) {
-        var $horNav = $(element),
-            $box = $horNav.find('> .js-hor-nav-box'),
-            $toggle = $box.next().find('> .js-dropdown-toggle'),
-            $boxChildren,
-            $currentChild,
-            $itemsArray,
-            isLast = false,
-            maxWidth,
-            boxOuterWidth,
-            isToggleHidden,
-            toggleOuterWidth,
-            currentWidth;
-
-        if($box.length === 1 && $toggle.length === 1) {
-            maxWidth = $horNav.width();
-            boxOuterWidth = getWidthWithMargin($box);
-            isToggleHidden = $toggle.css('display') === 'none';
-
-            if(isToggleHidden && (boxOuterWidth < maxWidth)){
-              return;
-            }
-
-            toggleOuterWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
-            currentWidth = boxOuterWidth + toggleOuterWidth;
-            $boxChildren = $box.children();
-            $currentChild = $boxChildren.filter('.is-last');
-            !$currentChild.length && ($currentChild = $boxChildren.last());
-            $itemsArray = $();
-
-            if(currentWidth > maxWidth) {
-
-              isToggleHidden && (currentWidth += getWidthWithMargin($toggle));
-
-              do {
-                currentWidth -= getWidthWithMargin($currentChild);
-                $itemsArray = $itemsArray.add($currentChild);
-                $currentChild = $currentChild.prev();
-              } while(currentWidth > maxWidth && $currentChild.length);
-
-              hideItems($itemsArray);
-              isToggleHidden && $toggle.show();
-            }
-
-            else if(currentWidth < maxWidth && !isToggleHidden) {
-
-              while(!isLast) {
-
-                $currentChild = $currentChild.next();
-                currentWidth += getWidthWithMargin($currentChild);
-
-                if($currentChild.is(':last-child')) {
-
-                  if(currentWidth - toggleOuterWidth < maxWidth) {
-                    isLast = true;
-                  }
-
-                  else {
-                    break;
-                  }
-                }
-
-                if(isLast || currentWidth < maxWidth) {
-                  $itemsArray = $itemsArray.add($currentChild);
-                }
-              }
-
-              isLast && $toggle.hide();
-              showItems($itemsArray);
-            }
-        }
+        timerId = setTimeout(run.bind(null, element), 50);
       });
     }
   }
