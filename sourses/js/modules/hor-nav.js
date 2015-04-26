@@ -2,12 +2,13 @@
 
   //TODO:
   // * комменты
-  // * добавление скрытых элементов в dropdown
   // * оптимизация
 
   var timerId,
+      $items,
+      length,
+      index,
       dropdown = API.modules.dropdown;
-
 
   function getWidthWithMargin($element) {
     var hMargins;
@@ -74,6 +75,7 @@
         $boxChildren,
         $currentChild,
         $itemsArray,
+        length,
         isLast = false,
         maxWidth,
         boxOuterWidth,
@@ -92,11 +94,10 @@
 
       toggleOuterWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
       currentWidth = boxOuterWidth + toggleOuterWidth;
-      $boxChildren = $box.children();
-      $currentChild = $boxChildren.filter('.is-last');
-      !$currentChild.length && ($currentChild = $boxChildren.last());
+      $currentChild = $box.find('> .is-last');
+      !$currentChild.length && ($currentChild = $box.find('> :last'));
       $itemsArray = $();
-      $dropdown = $(dropdown.getDropdownFor($toggle[0]));
+      $dropdown = $toggle.next();
 
       if(currentWidth > maxWidth) {
 
@@ -110,15 +111,19 @@
 
 
         hideItems($itemsArray);
-        $itemsArray = $itemsArray.map(function(index, element) {
-          return dropdown.createItem($(element).contents().clone()); /* !!! */
-        });
-        $dropdown.prepend($itemsArray);
-
         isToggleHidden && $toggle.show();
+
+        $dropdown.prepend(
+          $itemsArray.map(
+            function(index, element) {
+              return dropdown.createItem($(element).contents().clone()); /* !!! */
+            }
+          )
+        );
+
       }
 
-      else if(currentWidth < maxWidth && !isToggleHidden) {
+      else if(currentWidth < maxWidth) {
 
         while(!isLast) {
 
@@ -145,26 +150,67 @@
           dropdown.closeAndClearData($dropdown[0]);
           $toggle.hide();
         }
-        for(var i = 0, l = $itemsArray.length; i++ < l; $dropdown.find('> :first').remove());
-        showItems($itemsArray);
+
+        if(length = $itemsArray.length) {
+          showItems($itemsArray);
+
+          while(length--) {
+            $dropdown.find('> :first').remove();
+          }
+        }
       }
     }
   }
 
-  function horNavEventHandler() {
-    var $horNavs = $('.js-hor-nav');
-
-    if($horNavs.length) {
-      $horNavs.each(function(index, element) {
-        timerId = setTimeout(run.bind(null, element), 50);
-      });
+  function runHandler() {
+    if(length > index) {
+      run($items[index++]);
+      timerId = setTimeout(runHandler, 0);
     }
+    // else {
+    //   console.timeEnd('===');
+    //   return window.next && window.next();
+    // }
+  }
+
+  function horNavEventHandler() {
+    //console.time('===');
+    clearTimeout(timerId);
+
+    $items = $('.js-hor-nav');
+    length = $items.length;
+    index = 0;
+
+    timerId = setTimeout(runHandler, 250);
   }
 
   $(horNavEventHandler);
-  $(window).resize(function(){
-    clearTimeout(timerId);
-    timerId = setTimeout(horNavEventHandler, 250);
-  });
+  $(window).resize(horNavEventHandler);
+
+  // window.test = function(time, size) {
+  //   var time = time;
+  //   var defaultSize = false;
+  //   var $cnt = $('#COL');
+  //   var size = size;
+
+  //   window.next = function() {
+  //     if(defaultSize) {
+  //       $cnt.css('width', 'auto');
+  //       defaultSize = false;
+  //     }
+  //     else {
+  //       $cnt.css('width', size);
+  //       defaultSize = true;
+  //     }
+  //     --time && horNavEventHandler();
+  //   };
+
+  //   horNavEventHandler();
+  // }
+
+  // window.next;
+  // window.stop = function() {
+  //   window.next = undefined;
+  // }
 
 })(window.aWebsite, jQuery);
