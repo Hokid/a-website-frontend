@@ -22,6 +22,11 @@
           width: $width-dropdown-box;
           z-index: $z-index-dropdown-box;
         }
+
+        &.is-opened {
+          display: block;
+          z-index: ($z-index-dropdown-box)+1;
+        }
       }
 
       /// Временно

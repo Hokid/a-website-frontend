@@ -1,18 +1,18 @@
 ;(function($){
 
-  function isInHeader(toggle) {
-    return Boolean($(toggle).parents(".header,.l-header").length);
+  function inHeader(toggle) {
+    return Boolean($(toggle).closest(".header,.l-header").length);
   }
 
   function navEventHandler(e, data) {
-    if(!isInHeader(data.toggle)) return;
+    if(data.context !== document || !inHeader(data.toggle)) return;
 
     if(e.namespace === "open") {
-      $(data.toggle).addClass("pointer");
+      $(data.toggle).parent().addClass("pointer");
     }
 
     else if(e.namespace === "close") {
-      $(data.toggle).removeClass("pointer");
+      $(data.toggle).parent().removeClass("pointer");
     }
   }
 
