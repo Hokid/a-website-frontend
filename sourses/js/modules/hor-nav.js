@@ -11,15 +11,17 @@
       dropdown = API.modules.dropdown;
 
   function getWidthWithMargin($element) {
-    var hMargins;
+    var lMargin,
+        rMargin;
 
     !($element instanceof $) && ($element = $($element));
 
-    hMargins = parseInt($element.css('margin-left'))
-               +
-               parseInt($element.css('margin-right'));
+    lMargin = parseInt($element.css('margin-left'))
+    rMargin  = parseInt($element.css('margin-right'));
+    isNaN(lMargin) && (lMargin = 0);
+    isNaN(rMargin) && (rMargin = 0);
 
-    return $element.outerWidth() + hMargins;
+    return $element.outerWidth() + lMargin + rMargin;
   }
 
   function hideItems(items) {
@@ -68,6 +70,7 @@
   }
 
   function run(element) {
+    //console.time('var');
     var $horNav = $(element),
         $box = $horNav.find('> .js-hor-nav-box'),
         $toggle = $box.next().find('> .js-dropdown-toggle'),
@@ -82,12 +85,14 @@
         isToggleHidden,
         toggleOuterWidth,
         currentWidth;
-
+    //console.timeEnd('var');
     if($box.length === 1 && $toggle.length === 1) {
+      //console.time('1');
       maxWidth = $horNav.width();
       boxOuterWidth = getWidthWithMargin($box);
       isToggleHidden = $toggle.css('display') === 'none';
-
+      //console.timeEnd('1');
+      //console.time('2');
       if(isToggleHidden && (boxOuterWidth < maxWidth)){
         return;
       }
@@ -98,9 +103,10 @@
       !$currentChild.length && ($currentChild = $box.find('> :last'));
       $itemsArray = $();
       $dropdown = $toggle.next();
+      //console.timeEnd('2');
 
       if(currentWidth > maxWidth) {
-
+        //console.time('3.1');
         isToggleHidden && (currentWidth += getWidthWithMargin($toggle));
 
         do {
@@ -109,7 +115,8 @@
           $currentChild = $currentChild.prev();
         } while(currentWidth > maxWidth && $currentChild.length);
 
-
+        //console.timeEnd('3.1');
+        //console.time('3.2');
         hideItems($itemsArray);
         isToggleHidden && $toggle.show();
 
@@ -120,6 +127,7 @@
             }
           )
         );
+        //console.timeEnd('3.2');
 
       }
 
