@@ -39,8 +39,8 @@
   var root = document,
       rootBody = root.body,
       rootHTML = root.documentElement,
-      dropdownSelector = '.js-dropdown';
-      toggleSelector = '.js-dropdown-toggle';
+      dropdownSelector = '.js-dropdown',
+      toggleSelector = '.js-dropdown-toggle',
       closeBtnSelector = '.js-dropdown-close';
 
 
@@ -126,7 +126,7 @@
    */
 
   function isNode(anytype) {
-    return anytype instanceof Node;
+    return anytype && /^(1|3|8|9|10|11)$/.test(anytype.nodeType);
   }
 
   /**
@@ -137,7 +137,7 @@
    */
 
   function isElement(anytype) {
-    return anytype instanceof Element || anytype instanceof Document;
+    return anytype && /^(1|9)$/.test(anytype.nodeType);
   }
 
 
@@ -484,7 +484,7 @@
    *
    * @param  {anytype} content
    * @param  {string} href (значение по умолчанию '#')
-   * @return {jObject}
+   * @return {element}
    */
 
   function createItem(content, href) {
