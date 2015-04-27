@@ -5,6 +5,7 @@
 
 var gulp = require('gulp'),
     browserSync = require("browser-sync"),
+    mainBowerFiles = require("main-bower-files"),
     del = require("del"),
     htmlmin = require("gulp-htmlmin"),
     rubySass = require("gulp-ruby-sass"),
@@ -24,8 +25,7 @@ var path = {
       html: "sourses/html/",
       img: "sourses/img/",
       glyphicons: "sourses/glyph-icons/",
-      js: "sourses/js/",
-      jsVendors: "sourses/js/vendors/"
+      js: "sourses/js/"
     },
 
     build: {
@@ -180,11 +180,11 @@ gulp.task("js", function(){
 
   del( [path.build.js + "script.js", path.build.jsVendors + "*.js"], function( err, deletedFiles ){});
 
-  gulp.src(path.src.js + "script.js")
+  gulp.src([path.src.js + "script.js",path.src.js + "ie.js"])
     .pipe(include())
     .pipe(gulp.dest(path.build.js));
 
-  gulp.src(path.src.jsVendors + "*.js")
+  gulp.src(mainBowerFiles({ filter: "**/*.js", env: "min" }))
     .pipe(gulp.dest(path.build.jsVendors));
 });
 

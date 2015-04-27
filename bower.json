@@ -1,0 +1,23 @@
+{
+  "name": "a-website",
+  "author": "hokid",
+  "privat": true,
+  "dependencies": {
+    "jquery": "1.11.2",
+    "respond": "~1.4.2"
+  },
+  "overrides": {
+    "respond": {
+      "main": {
+        "src": "dest/respond.src.js",
+        "min": "dest/respond.min.js"
+      }
+    },
+    "jquery": {
+      "main": {
+        "src": "dist/jquery.js",
+        "min": "dist/jquery.min.js"
+      }
+    }
+  }
+}
