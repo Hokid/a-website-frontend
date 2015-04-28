@@ -126,7 +126,7 @@
    */
 
   function isNode(anytype) {
-    return anytype && /^(1|3|8|9|10|11)$/.test(anytype.nodeType);
+    return $.type(anytype) === 'object' && /^(1|3|8|9|10|11)$/.test(anytype.nodeType);
   }
 
   /**
@@ -137,7 +137,7 @@
    */
 
   function isElement(anytype) {
-    return anytype && /^(1|9)$/.test(anytype.nodeType);
+    return $.type(anytype) === 'object' && /^(1|9)$/.test(anytype.nodeType);
   }
 
 
