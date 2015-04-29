@@ -21,3 +21,7 @@ insert_final_newline = true
 
 # Обрезание пробелов в конце строк
 trim_trailing_whitespace = true
+
+[*.md]
+
+trim_trailing_whitespace = false
