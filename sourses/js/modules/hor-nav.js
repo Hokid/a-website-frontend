@@ -1,8 +1,65 @@
-;(function(API, $) {
+/**
+ * -------------------------------------
+ * Горизонтальная навигаци
+ * с подстраиванием под ширину экрана.
+ * -------------------------------------
+ */
 
-  //TODO:
-  // * комменты
-  // * оптимизация
+/**
+ * -----------------------------------
+ * |1                                |
+ * |  ----------------- ------------ |
+ * | |2               | | 4        | |
+ * | | --------       | |          | |
+ * | | | 3    |       | ------------ |
+ * | | --------       |              |
+ * | |________________|              |
+ * |                                 |
+ * |_________________________________|
+ *
+ *
+ *
+ *  [1] - контейнер соответствующий селектору `.js-hor-nav`.
+ *        Значения свойства `white-space` у этого контейнера равно `nowrap`,
+ *        т.е. инлайновым элементам запрещается переноситься на новую строку.
+ *
+ *  [2] - контейнер типа inline-block, в котором содержатся item(s).
+ *
+ *  [3] - элементы навигации item. На данный момент предполагается,
+ *        что item(s) это inline-block.
+ *
+ *  [4] - контейнер типа inline-block и относительным позиционированием.
+ *      Он предназначен для dropdown и прилагающегося к нему toggle.
+ *
+ *
+ *
+ *  Описание действий:
+ *
+ *    1. Вычисляется ширина контента контейнера [1] - (w1).
+ *
+ *    2. Вычисляется ширина контейнера [2], включающаяя margin, border,
+ *       padding - (w2).
+ *
+ *    3. Проверяется скрыт ли контейнер [4].
+ *
+ *    4. Если действие в п.3 дало отрицительный результат(false),
+ *       то вычисляется ширина контейнера [4], включающая margin, border,
+ *       padding - (w3). В противном случае (w3 = 0).
+ *
+ *    4. Вычисляется общая ширина потомков контейнера [1] - (w4 = w2 + w3).
+ *
+ *    5. Если (w4 > w1), то определяется необходимое кол-во item(s),
+ *       которые надо скрыть, чтобы удовлетворить выражению (w1 >= w4).
+ *
+ *    6. Если (w4 < w1), то определяется необходимое кол-во item(s),
+ *       которые надо показать, и при этом удовлетворить выражению (w1 >= w4).
+ *
+ *  !!! Это краткое описание, здесь опущены детали, такие как учет видимости
+ *  контейнера [4] в п. 5-6. и т.п. Эти действия выполняются функцией `run`
+ *
+ */
+
+;(function(API, $) {
 
   var timerId,
       $items,
@@ -10,149 +67,209 @@
       index,
       dropdown = API.modules.dropdown;
 
+
+
+  /**
+   * --------------------------------
+   *             Реализация
+   * --------------------------------
+   */
+
+  /**
+   * Получить ширину элемента вместе с полями(margin).
+   *
+   * @param  {jObject, element} $element
+   * @return {int, undefined}
+   *  * undefined если $element не является или не содержит element.
+   */
+
   function getWidthWithMargin($element) {
     var lMargin,
         rMargin;
 
-    !($element instanceof $) && ($element = $($element));
+    if(!($element instanceof $)) {
+      $element = $($element);
+    }
+
+    if(!$element.length) {
+      return undefined;
+    }
 
     lMargin = parseInt($element.css('margin-left'))
     rMargin  = parseInt($element.css('margin-right'));
+
     isNaN(lMargin) && (lMargin = 0);
     isNaN(rMargin) && (rMargin = 0);
 
     return $element.outerWidth() + lMargin + rMargin;
   }
 
-  function hideItems(items) {
+  /**
+   * Скрывает элементы и ставить указатель 'is-last'
+   * на последний видимый элемент(исключая случай когда скрывается даже
+   * тот элемент, который соответствует селектору ':first-child').
+   * Если всё прошло успосшно, то функция должна вернуть скрытые элементы.
+   *
+   * @param  {jObject} $items
+   * @return {jObject, undefined}
+   */
+
+  function hideItems($items) {
+
     var $lastItem,
         $prevItem;
 
-    if(items instanceof $ && items.length) {
-      $lastItem = items.last();
-      $prevItem = items.first().prev();
+    if($items instanceof $ && $items.length) {
+      $lastItem = $items.last();
+      $prevItem = $items.first().prev();
 
       if($lastItem.is('.is-last')) {
         $lastItem.removeClass('is-last');
       }
 
-      items.hide();
+      $items.hide();
 
       if($prevItem.length) {
         $prevItem.addClass('is-last');
       }
 
-      return items;
+      return $items;
     }
   }
 
-  function showItems(items) {
+  /**
+   * Показывает элементы и ставить указатель 'is-last'
+   * на последний видимый элемент(исключая случай когда показывается даже
+   * тот элемент, который соответствует селектору ':last-child').
+   * Если всё прошло успосшно, то функция должна вернуть показанные элементы.
+   *
+   * @param  {jObject} $items
+   * @return {jObject, undefined}
+   */
+
+  function showItems($items) {
+
     var $lastItem,
         $prevItem,
         $nextItem;
 
-    if(items instanceof $ && items.length) {
-      $lastItem = items.last();
-      $prevItem = items.first().prev();
+    if($items instanceof $ && $items.length) {
+      $lastItem = $items.last();
+      $prevItem = $items.first().prev();
 
       if($prevItem.length && $prevItem.is('.is-last')) {
         $prevItem.removeClass('is-last');
       }
 
-      items.show();
+      $items.show();
 
       if($lastItem.next().length) {
         $lastItem.addClass('is-last');
       }
 
-      return items;
+      return $items;
     }
   }
 
+  /**
+   * Функция выполняет все необходимые расчеты и действия, описаные вначале.
+   * Принимает в качестве параметра element соответствующий селектору
+   * '.js-hor-nav'.
+   *
+   * @param  {element} element
+   * @return {undefined}
+   */
+
   function run(element) {
-    //console.time('var');
+
     var $horNav = $(element),
         $box = $horNav.find('> .js-hor-nav-box'),
         $toggle = $box.next().find('> .js-dropdown-toggle'),
         $dropdown,
-        $boxChildren,
-        $currentChild,
+        $currentItem,
         $itemsArray,
         length,
         isLast = false,
         maxWidth,
-        boxOuterWidth,
+        boxWidth,
         isToggleHidden,
-        toggleOuterWidth,
+        toggleWidth,
         currentWidth;
-    //console.timeEnd('var');
-    if($box.length === 1 && $toggle.length === 1) {
-      //console.time('1');
+
+
+
+    if(!($box.length - $toggle.length)) {
+
       maxWidth = $horNav.width();
-      boxOuterWidth = getWidthWithMargin($box);
+      boxWidth = getWidthWithMargin($box);
+
       isToggleHidden = $toggle.css('display') === 'none';
-      //console.timeEnd('1');
-      //console.time('2');
-      if(isToggleHidden && (boxOuterWidth < maxWidth)){
+      if(isToggleHidden && (boxWidth < maxWidth)){
         return;
       }
 
-      toggleOuterWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
-      currentWidth = boxOuterWidth + toggleOuterWidth;
-      $currentChild = $box.find('> .is-last');
-      !$currentChild.length && ($currentChild = $box.find('> :last'));
+      toggleWidth = isToggleHidden ? 0 : getWidthWithMargin($toggle);
+      currentWidth = boxWidth + toggleWidth;
+
+      $currentItem = $box.find('> .is-last');
+      if(!$currentItem.length) {
+        $currentItem = $box.find('> :last');
+      }
+
       $itemsArray = $();
       $dropdown = $toggle.next();
-      //console.timeEnd('2');
+
+
 
       if(currentWidth > maxWidth) {
-        //console.time('3.1');
-        isToggleHidden && (currentWidth += getWidthWithMargin($toggle));
+
+        if(isToggleHidden) {
+          currentWidth += getWidthWithMargin($toggle);
+        }
 
         do {
-          currentWidth -= getWidthWithMargin($currentChild);
-          $itemsArray = $itemsArray.add($currentChild);
-          $currentChild = $currentChild.prev();
-        } while(currentWidth > maxWidth && $currentChild.length);
+          currentWidth -= getWidthWithMargin($currentItem);
+          $itemsArray = $itemsArray.add($currentItem);
+          $currentItem = $currentItem.prev();
+        } while(currentWidth > maxWidth && $currentItem.length);
 
-        //console.timeEnd('3.1');
-        //console.time('3.2');
         hideItems($itemsArray);
-        isToggleHidden && $toggle.show();
+
+        if(isToggleHidden) {
+          $toggle.show();
+        }
 
         $dropdown.prepend(
           $itemsArray.map(
             function(index, element) {
-              return dropdown.createItem($(element).contents().clone()); /* !!! */
+              return dropdown.createItem($(element).contents().clone());
             }
           )
         );
-        //console.timeEnd('3.2');
 
       }
 
+
+
       else if(currentWidth < maxWidth) {
 
-        while(!isLast) {
+        do {
 
-          $currentChild = $currentChild.next();
-          currentWidth += getWidthWithMargin($currentChild);
+          $currentItem = $currentItem.next();
+          currentWidth += getWidthWithMargin($currentItem);
 
-          if($currentChild.is(':last-child')) {
-
-            if(currentWidth - toggleOuterWidth < maxWidth) {
+          if($currentItem.is(':last-child')) {
+            if(currentWidth - toggleWidth < maxWidth) {
               isLast = true;
+              $itemsArray = $itemsArray.add($currentItem);
             }
-
-            else {
-              break;
-            }
+            break;
+          }
+          else if(currentWidth < maxWidth) {
+            $itemsArray = $itemsArray.add($currentItem);
           }
 
-          if(isLast || currentWidth < maxWidth) {
-            $itemsArray = $itemsArray.add($currentChild);
-          }
-        }
+        } while(currentWidth < maxWidth);
 
         if(isLast) {
           dropdown.closeAndClearData($dropdown[0]);
@@ -170,19 +287,24 @@
     }
   }
 
+  /**
+   * Управление запуском функции `run`.
+   */
+
   function runHandler() {
     if(length > index) {
       run($items[index++]);
       timerId = setTimeout(runHandler, 0);
     }
-    // else {
-    //   console.timeEnd('===');
-    //   return window.next && window.next();
-    // }
   }
 
+  /**
+   * Функция, передаваемая в качестве handler-а события.
+   * Останавливает текущую деятельность `runHandler`, затем
+   * запускает `runHandler` снова.
+   */
+
   function horNavEventHandler() {
-    //console.time('===');
     clearTimeout(timerId);
 
     $items = $('.js-hor-nav');
@@ -192,33 +314,12 @@
     timerId = setTimeout(runHandler, 250);
   }
 
+
+
+  // Делаем обход после загрузки DOM
   $(horNavEventHandler);
+
+  // Ставим обработчик на ресайз
   $(window).resize(horNavEventHandler);
-
-  // window.test = function(time, size) {
-  //   var time = time;
-  //   var defaultSize = false;
-  //   var $cnt = $('#COL');
-  //   var size = size;
-
-  //   window.next = function() {
-  //     if(defaultSize) {
-  //       $cnt.css('width', 'auto');
-  //       defaultSize = false;
-  //     }
-  //     else {
-  //       $cnt.css('width', size);
-  //       defaultSize = true;
-  //     }
-  //     --time && horNavEventHandler();
-  //   };
-
-  //   horNavEventHandler();
-  // }
-
-  // window.next;
-  // window.stop = function() {
-  //   window.next = undefined;
-  // }
 
 })(window.aWebsite, jQuery);
