@@ -27,4 +27,7 @@ bower install
 
 ###Таски
 `gulp build` - сборка. Все файлы доступны в директории _build_   
-`gulp server` - запус лок. сервера. Доступен по адресу _localhost:8000_  
+`gulp server` - запус лок. сервера. Доступен по адресу _localhost:8000_
+
+###Ссылки
+* Полная версия сайта [тут](https://github.com/Hokid/a-website)
